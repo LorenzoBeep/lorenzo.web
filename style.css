@@ -1,21 +1,59 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f8ff;
-  padding: 40px;
-  text-align: center;
+.navbar {
+  background-color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 2px solid #eee;
 }
 
-p {
-  font-size: 1.2rem;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  margin-right: auto;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background-color: white;
+  color: #333;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  min-width: 120px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
   color: #333;
 }
 
-strong {
-  color: #0078d4;
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
 }
 
-em {
-  background-color: #fff3cd;
-  padding: 2px 4px;
-  border-radius: 4px;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
