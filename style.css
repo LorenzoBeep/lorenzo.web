@@ -284,10 +284,15 @@ body.dark-mode .notice-close {
   color: #333;
   text-decoration: none;
   padding: 8px 12px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 36px; /* 🧠 allineato alle altre voci */
+  height: 36px;           /* 👈 altezza coerente */
   box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.navbar .nav-link-text {
+  margin-top: 2px;        /* 👈 se serve piccola correzione verticale */
 }
 
 body.dark-mode .nav-link-text {
