@@ -286,6 +286,23 @@ body.mobile-mode .navbar {
   background-color: #eef;
 }
 
+.dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Freccia */
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Quando il menu è aperto → ruota la freccia */
+.dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
 body.mobile-mode .logo {
   font-size: 1.6rem;
 }
