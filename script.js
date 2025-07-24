@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dropdown menu
   const dropdowns = document.querySelectorAll(".dropdown");
 
   dropdowns.forEach(dropdown => {
@@ -17,14 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdowns.forEach(drop => drop.classList.remove("active"));
   }
 
-  // 🌗 Modalità scura
+  // 🌗 Modalità scura toggle
   const themeToggle = document.getElementById("theme-toggle");
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌙" : "🌞";
   });
 
-  // 🚨 Popup uscita
+  // 🍔 Menu hamburger
+  const hamburger = document.getElementById("hamburger-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // 🚨 Popup di uscita per link esterni
   const externalLinks = document.querySelectorAll('a[target="_blank"]');
   externalLinks.forEach(link => {
     link.addEventListener("click", function (e) {
@@ -54,4 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // 📱 Rilevamento dispositivo mobile
+  function isMobileDevice() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  if (isMobileDevice()) {
+    document.body.classList.add("mobile-mode");
+  }
 });
