@@ -286,7 +286,7 @@ body.dark-mode .notice-close {
   padding: 8px 12px;
   display: inline-flex;
   align-items: center;
-  height: 36px;           /* 👈 altezza coerente */
+  height: 25px;           /* 👈 altezza coerente */
   box-sizing: border-box;
   vertical-align: middle;
 }
