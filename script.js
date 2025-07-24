@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdowns = document.querySelectorAll(".dropdown");
   dropdowns.forEach(dropdown => {
     const btn = dropdown.querySelector(".dropbtn");
-
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       closeAllDropdowns();
@@ -16,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function closeAllDropdowns() {
-    dropdowns.forEach(dropdown => {
-      dropdown.classList.remove("active");
-    });
+    dropdowns.forEach(dropdown => dropdown.classList.remove("active"));
   }
 
   // 🌗 Modalità scura
@@ -28,15 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌙" : "🌞";
   });
 
-  // 🍔 Menu hamburger
-  const hamburger = document.getElementById("hamburger-toggle");
-  const navLinks = document.querySelector(".nav-links");
-
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-
-  // 🚨 Popup uscita per link esterni
+  // 🚨 Popup uscita
   const externalLinks = document.querySelectorAll('a[target="_blank"]');
   externalLinks.forEach(link => {
     link.addEventListener("click", function (e) {
@@ -66,6 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // 🟡 Chiudi barra WIP
+  const closeNotice = document.getElementById("closeNotice");
+  if (closeNotice) {
+    closeNotice.addEventListener("click", () => {
+      const notice = document.getElementById("wipNotice");
+      if (notice) {
+        notice.style.display = "none";
+      }
+    });
+  }
 
   // 📱 Rilevamento mobile
   function isMobileDevice() {
