@@ -23,8 +23,7 @@ body {
   margin-right: auto;
 }
 
-.theme-btn,
-.hamburger {
+.theme-btn {
   background: none;
   border: none;
   font-size: 1.4rem;
@@ -34,12 +33,10 @@ body {
   transition: transform 0.3s ease;
 }
 
-.theme-btn:hover,
-.hamburger:hover {
-  transform: rotate(15deg);
+.theme-btn:hover {
+  transform: rotate(20deg);
 }
 
-/* Navigazione */
 .nav-links {
   display: flex;
   gap: 15px;
@@ -51,6 +48,9 @@ body {
 }
 
 .dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   background: none;
   border: none;
   font-size: 1rem;
@@ -59,8 +59,13 @@ body {
   padding: 8px 12px;
 }
 
-.dropbtn:hover {
-  color: #0078d4;
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.dropdown.active .arrow {
+  transform: rotate(180deg);
 }
 
 .dropdown-content {
@@ -91,26 +96,7 @@ body {
   display: block;
 }
 
-/* WIP Message */
-.wip-message {
-  text-align: center;
-  margin-top: 60px;
-  padding: 40px;
-  font-size: 1.2rem;
-  color: #444;
-}
-
-strong {
-  color: #0078d4;
-}
-
-em {
-  background-color: #fff3cd;
-  padding: 2px 5px;
-  border-radius: 5px;
-}
-
-/* Immagine */
+/* Galleria */
 .gallery {
   text-align: center;
   margin-top: 40px;
@@ -130,7 +116,7 @@ em {
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 🌙 Modalità scura */
+/* 🌗 Modalità scura */
 body.dark-mode {
   background-color: #1c1c1c;
   color: #f0f0f0;
@@ -159,10 +145,6 @@ body.dark-mode .dropdown-content a:hover {
   background-color: #444;
 }
 
-body.dark-mode .wip-message em {
-  background-color: #333;
-}
-
 /* 🚨 Popup uscita */
 .exit-overlay {
   position: fixed;
@@ -182,10 +164,6 @@ body.dark-mode .wip-message em {
   max-width: 400px;
   text-align: center;
   box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-.exit-popup p {
-  margin-bottom: 20px;
 }
 
 .popup-buttons {
@@ -243,66 +221,37 @@ body.dark-mode .exit-cancel:hover {
   background-color: #666;
 }
 
-/* 🍔 Responsive hamburger */
-.hamburger {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .dropdown {
-    width: 100%;
-  }
-
-  .dropdown-content {
-    position: static;
-    border: none;
-    background-color: #f9f9f9;
-  }
-
-  .dropdown-content a {
-    padding: 10px 15px;
-  }
-}
-
-/* 📱 Modalità mobile rilevata */
-body.mobile-mode .navbar {
-  background-color: #eef;
-}
-
-.dropbtn {
+/* 🟡 Barra WIP */
+.wip-notice {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  background-color: #fffbe6;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #444;
 }
 
-/* Freccia */
-.arrow {
-  display: inline-block;
+.notice-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
   transition: transform 0.3s ease;
 }
 
-/* Quando il menu è aperto → ruota la freccia */
-.dropdown.active .arrow {
-  transform: rotate(180deg);
+.notice-close:hover {
+  transform: rotate(90deg);
 }
 
-body.mobile-mode .logo {
-  font-size: 1.6rem;
+body.dark-mode .wip-notice {
+  background-color: #333;
+  color: #eee;
+  border-color: #444;
+}
+
+body.dark-mode .notice-close {
+  color: #aaa;
 }
