@@ -255,3 +255,18 @@ body.dark-mode .wip-notice {
 body.dark-mode .notice-close {
   color: #aaa;
 }
+
+@keyframes slideUpFade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.wip-notice.slide-up {
+  animation: slideUpFade 0.6s ease forwards;
+}
