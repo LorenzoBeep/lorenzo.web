@@ -17,18 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdowns.forEach(drop => drop.classList.remove("active"));
   }
 
-  // Modalità scura 🌗
+  // 🌗 Modalità scura
   const themeToggle = document.getElementById("theme-toggle");
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌙" : "🌞";
   });
 
-  // Popup uscita 🛑
-  const externalLinks = document.querySelectorAll('a[target="_blank"]');
-  externalLinks.forEach(link =>
-
-  // 🔔 Popup uscita per link esterni
+  // 🚨 Popup uscita
   const externalLinks = document.querySelectorAll('a[target="_blank"]');
   externalLinks.forEach(link => {
     link.addEventListener("click", function (e) {
@@ -58,3 +54,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+});
