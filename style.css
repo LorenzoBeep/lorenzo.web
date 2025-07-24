@@ -59,8 +59,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.dropdown-content a:hover
-
 .dropdown-content a:hover {
   background-color: #eee;
 }
@@ -85,4 +83,23 @@ em {
   background-color: #fff3cd;
   padding: 2px 5px;
   border-radius: 5px;
+}
+
+.gallery {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.zoom-img {
+  width: 200px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.zoom-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
