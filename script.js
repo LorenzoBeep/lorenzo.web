@@ -57,15 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 🟡 Chiudi barra WIP
-  const closeNotice = document.getElementById("closeNotice");
-  if (closeNotice) {
-    closeNotice.addEventListener("click", () => {
-      const notice = document.getElementById("wipNotice");
-      if (notice) {
-        notice.style.display = "none";
-      }
-    });
-  }
+ if (closeNotice) {
+  closeNotice.addEventListener("click", () => {
+    const notice = document.getElementById("wipNotice");
+    if (notice) {
+      notice.classList.add("slide-up");
+      setTimeout(() => {
+        notice.remove();
+      }, 600); // tempo uguale alla durata dell'animazione
+    }
+  });
+}
 
   // 📱 Rilevamento mobile
   function isMobileDevice() {
