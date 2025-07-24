@@ -1,3 +1,31 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  background-color: white;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0078d4;
+  margin-right: auto;
+}
+
+.dropdown {
+  position: relative;
+}
+
 .dropbtn {
   background: none;
   border: none;
@@ -17,12 +45,12 @@
   background-color: #fff;
   border: 1px solid #ddd;
   min-width: 150px;
-  z-index: 10;
+  z-index: 100;
 }
 
 .dropdown-content a {
-  display: block;
   padding: 10px;
+  display: block;
   color: #333;
   text-decoration: none;
 }
@@ -33,4 +61,22 @@
 
 .dropdown.active .dropdown-content {
   display: block;
+}
+
+.wip-message {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+strong {
+  color: #0078d4;
+}
+
+em {
+  background-color: #fff3cd;
+  padding: 2px 5px;
+  border-radius: 5px;
 }
