@@ -27,3 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Popup uscita 🛑
   const externalLinks = document.querySelectorAll('a[target="_blank"]');
   externalLinks.forEach(link =>
+
+  // 🔔 Popup uscita per link esterni
+  const externalLinks = document.querySelectorAll('a[target="_blank"]');
+  externalLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const destination = this.href;
+
+      const confirmOverlay = document.createElement("div");
+      confirmOverlay.className = "exit-overlay";
+      confirmOverlay.innerHTML = `
+        <div class="exit-popup">
+          <p><strong>Aspetta, frena!</strong> 🚧<br>Stai per uscire da questo sito. Ricorda di stare attento!</p>
+          <div class="popup-buttons">
+            <button class="exit-confirm">Ho capito</button>
+            <button class="exit-cancel">Aspetta, no!</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(confirmOverlay);
+
+      confirmOverlay.querySelector(".exit-confirm").addEventListener("click", () => {
+        window.open(destination, "_blank");
+        document.body.removeChild(confirmOverlay);
+      });
+
+      confirmOverlay.querySelector(".exit-cancel").addEventListener("click", () => {
+        document.body.removeChild(confirmOverlay);
+      });
+    });
+  });
