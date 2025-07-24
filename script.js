@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Dropdown menu
+  // Dropdown
   const dropdowns = document.querySelectorAll(".dropdown");
-
   dropdowns.forEach(dropdown => {
     const btn = dropdown.querySelector(".dropbtn");
 
@@ -12,13 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.addEventListener("click", closeAllDropdowns);
+  document.addEventListener("click", () => {
+    closeAllDropdowns();
+  });
 
   function closeAllDropdowns() {
-    dropdowns.forEach(drop => drop.classList.remove("active"));
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove("active");
+    });
   }
 
-  // 🌗 Modalità scura toggle
+  // 🌗 Modalità scura
   const themeToggle = document.getElementById("theme-toggle");
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.classList.toggle("active");
   });
 
-  // 🚨 Popup di uscita per link esterni
+  // 🚨 Popup uscita per link esterni
   const externalLinks = document.querySelectorAll('a[target="_blank"]');
   externalLinks.forEach(link => {
     link.addEventListener("click", function (e) {
@@ -64,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 📱 Rilevamento dispositivo mobile
+  // 📱 Rilevamento mobile
   function isMobileDevice() {
     return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
