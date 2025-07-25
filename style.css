@@ -298,3 +298,26 @@ body.dark-mode .notice-close {
 body.dark-mode .nav-link-text {
   color: #f0f0f0;
 }
+
+.homepage-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 20px;
+  background-color: #fafafa;
+}
+
+.hero-visual {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.hero-content {
+  flex: 1 1 300px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+body.dark-mode .hero-content {
+  color: #ddd;
+}
