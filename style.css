@@ -330,7 +330,7 @@ body.dark-mode .hero-content {
   align-items: center;
 }
 
-.png-section.reverse {
+.reversed-layout {
   flex-direction: row-reverse;
 }
 
@@ -342,31 +342,40 @@ body.dark-mode .hero-content {
   align-items: center;
 }
 
+.bordered-img {
+  border: 2px solid #aaa;
+  border-radius: 12px;
+  padding: 8px;
+  background-color: #f9f9f9;
+}
+
 .png-img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .png-content {
   flex: 1;
   font-size: 1.1rem;
   color: #222;
+}
+
+.bordered-text .png-content {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
   padding: 20px;
 }
 
-.bordered {
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  background-color: #fdfdfd;
+body.dark-mode .bordered-img {
+  border-color: #666;
+  background-color: #333;
 }
 
-body.dark-mode .png-content {
-  color: #ddd;
-}
-
-body.dark-mode .bordered {
+body.dark-mode .bordered-text .png-content {
   border-color: #666;
   background-color: #222;
+  color: #ddd;
 }
