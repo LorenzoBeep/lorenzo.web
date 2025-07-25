@@ -324,32 +324,49 @@ body.dark-mode .hero-content {
 
 .png-section {
   display: flex;
-  flex-direction: row-reverse; /* testo a sinistra, immagine a destra */
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 60px 20px;
+  align-items: center;
+}
+
+.png-section.reverse {
+  flex-direction: row-reverse;
 }
 
 .png-visual {
   flex: 0 0 220px;
   height: 420px;
-  background-color: #eee;
-  border: 2px dashed #ccc;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .png-img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .png-content {
   flex: 1;
   font-size: 1.1rem;
   color: #222;
+  padding: 20px;
+}
+
+.bordered {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+}
+
+body.dark-mode .png-content {
+  color: #ddd;
+}
+
+body.dark-mode .bordered {
+  border-color: #666;
+  background-color: #222;
 }
