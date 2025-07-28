@@ -588,3 +588,46 @@ body.dark-mode .invite-btn {
 body.dark-mode .invite-btn:hover {
   background-color: #3498db;
 }
+
+.card-box {
+  width: 400px;
+  min-height: 280px;
+  padding: 24px;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-box img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.card-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.card-box p {
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.card-box button {
+  width: 80%;
+  padding: 10px 0;
+  background-color: #0088ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
