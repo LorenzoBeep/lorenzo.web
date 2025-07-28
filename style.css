@@ -483,50 +483,48 @@ body.dark-mode .intro-section {
   align-items: center;
 }
 
-.bot-visual {
+/* Cornice 200x400 stile PNG */
+.png-visual {
   flex: 0 0 200px;
+  height: 400px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
+  border: 2px solid #aaa;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
 }
 
-.rays-frame {
+/* Raggi esterni */
+.rays-center {
+  position: relative;
   width: 140px;
   height: 140px;
-  padding: 10px;
-  border: 2px solid #2c2c2c;
   border-radius: 50%;
   background: radial-gradient(circle, #0078d4 0%, #00c3ff 100%);
-  box-shadow: 0 0 16px rgba(0,0,0,0.2);
+  animation: rotate-rays 28s linear infinite; /* ✅ più lento */
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: rotate-rays 22s linear infinite; /* 🎯 più lento */
 }
 
+/* Immagine al centro senza bordo */
 .bot-img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.bot-nome {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-}
-
-/* Animazione raggi */
 @keyframes rotate-rays {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* Area descrizione + pulsante */
+/* Contenuto + pulsante accanto */
 .side-by-side {
   display: flex;
   gap: 20px;
@@ -539,13 +537,12 @@ body.dark-mode .intro-section {
 }
 
 .invite-btn {
-  display: inline-block;
-  padding: 12px 20px;
+  padding: 12px 18px;
   background-color: #0078d4;
   color: white;
   font-weight: bold;
-  text-decoration: none;
   border-radius: 8px;
+  text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
 }
@@ -555,12 +552,13 @@ body.dark-mode .intro-section {
   transform: scale(1.05);
 }
 
-/* Dark Mode */
-body.dark-mode .bot-nome {
-  color: #ddd;
+/* Modalità dark */
+body.dark-mode .png-visual {
+  background-color: #222;
+  border-color: #666;
 }
 
-body.dark-mode .rays-frame {
+body.dark-mode .rays-center {
   background: radial-gradient(circle, #3498db 0%, #50b7f5 100%);
 }
 
