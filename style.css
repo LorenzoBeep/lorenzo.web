@@ -479,23 +479,23 @@ body.dark-mode .intro-section {
   display: flex;
   gap: 30px;
   padding: 40px 20px;
-  align-items: flex-start;
+  align-items: center; /* ✅ centratura verticale */
   justify-content: center;
 }
 
-/* Cornice precisa 200×400 */
+/* ✅ Cornice 200×400 esatta */
 .emoji-frame {
-  position: relative;
   width: 200px;
   height: 400px;
   border: 2px solid #aaa;
   border-radius: 12px;
   background-color: #f9f9f9;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  box-sizing: border-box;
+  box-sizing: content-box; /* ← evita che il padding alteri le dimensioni */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* Immagine bot */
@@ -505,12 +505,14 @@ body.dark-mode .intro-section {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-/* Emoji penzolanti */
+/* Emojis */
 .emoji {
   position: absolute;
   font-size: 1.5rem;
+  z-index: 0;
 }
 
 .swing-left {
@@ -534,23 +536,23 @@ body.dark-mode .intro-section {
   50% { transform: rotate(-6deg); }
 }
 
-/* Descrizione + pulsante separati */
+/* ✅ Contenuto con bordi e pulsante centrato */
 .content-wrap {
   display: flex;
   flex-direction: column;
+  justify-content: center; /* ← centratura verticale */
   gap: 20px;
   flex: 1;
+  padding: 20px;
   border: 2px solid #ccc;
   border-radius: 12px;
   background-color: #fff;
-  padding: 20px;
   box-sizing: border-box;
 }
 
-/* Pulsante spostato verso destra */
 .bot-button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* ✅ centratura orizzontale */
 }
 
 .invite-btn {
@@ -562,6 +564,7 @@ body.dark-mode .intro-section {
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
+  margin: 0 auto; /* ✅ posizione centrale */
 }
 
 .invite-btn:hover {
@@ -569,7 +572,7 @@ body.dark-mode .intro-section {
   transform: scale(1.05);
 }
 
-/* Modalità scura */
+/* Dark mode */
 body.dark-mode .emoji-frame {
   background-color: #222;
   border-color: #666;
@@ -587,44 +590,4 @@ body.dark-mode .invite-btn {
 
 body.dark-mode .invite-btn:hover {
   background-color: #3498db;
-}
-
-.content-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  background-color: #fff;
-  padding: 20px;
-  box-sizing: border-box;
-
-  /* ✨ Centra verticalmente nella sezione */
-  justify-content: center;
-}
-
-.bot-description {
-  /* ✨ Spazio sopra per armonia verticale */
-  margin-top: 10px;
-}
-
-.bot-button {
-  display: flex;
-
-  /* ✨ Centra orizzontalmente il pulsante */
-  justify-content: center;
-}
-
-.invite-btn {
-  padding: 12px 20px;
-  background-color: #0078d4;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
-  /* ✨ Rimuove allineamenti forzati precedenti */
-  margin: 0 auto;
 }
