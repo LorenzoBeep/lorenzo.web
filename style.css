@@ -474,3 +474,87 @@ body.dark-mode .intro-breve {
 body.dark-mode .intro-section {
   background-color: #1a1a1a; /* colore scuro per la modalità dark */
 }
+
+.bot-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 20px;
+  align-items: center;
+}
+
+.bot-visual {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.rays-wrapper {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #2c2c2c;
+  padding: 6px;
+  position: relative;
+  background: radial-gradient(circle, #0078d4 0%, #00c3ff 100%);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: rotate-rays 12s linear infinite;
+}
+
+.bot-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bot-nome {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+@keyframes rotate-rays {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pulsante "Invita" */
+.invite-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #0078d4;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.invite-btn:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+/* Dark mode */
+body.dark-mode .bot-nome {
+  color: #ddd;
+}
+
+body.dark-mode .rays-wrapper {
+  background: radial-gradient(circle, #3498db 0%, #50b7f5 100%);
+}
+
+body.dark-mode .invite-btn {
+  background-color: #50b7f5;
+  color: #1c1c1c;
+}
+
+body.dark-mode .invite-btn:hover {
+  background-color: #3498db;
+}
