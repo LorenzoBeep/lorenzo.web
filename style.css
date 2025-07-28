@@ -588,3 +588,43 @@ body.dark-mode .invite-btn {
 body.dark-mode .invite-btn:hover {
   background-color: #3498db;
 }
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* ✨ Centra verticalmente nella sezione */
+  justify-content: center;
+}
+
+.bot-description {
+  /* ✨ Spazio sopra per armonia verticale */
+  margin-top: 10px;
+}
+
+.bot-button {
+  display: flex;
+
+  /* ✨ Centra orizzontalmente il pulsante */
+  justify-content: center;
+}
+
+.invite-btn {
+  padding: 12px 20px;
+  background-color: #0078d4;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  /* ✨ Rimuove allineamenti forzati precedenti */
+  margin: 0 auto;
+}
