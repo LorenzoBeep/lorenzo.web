@@ -475,91 +475,52 @@ body.dark-mode .intro-section {
   background-color: #1a1a1a; /* colore scuro per la modalità dark */
 }
 
-/* Sezione intera */
-.bot-section {
+.bot-showcase {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  padding: 60px 20px;
+  padding: 40px 20px;
   align-items: center;
+  justify-content: center;
 }
 
-/* Cornice 200x400 SENZA bordo */
-.png-visual.no-border {
-  flex: 0 0 200px;
+/* Cornice 200x400 */
+.emoji-frame {
+  position: relative;
+  width: 200px;
   height: 400px;
+  border: 2px solid #aaa;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  border: none;
-  position: relative;
-  overflow: visible;
 }
 
-/* Raggi animati */
-.rays-center {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #0078d4 0%, #00c3ff 100%);
-  animation: rotate-rays 28s linear infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 24px rgba(0,0,0,0.2);
-  z-index: 0;
-}
-
-/* Immagine bot senza bordi */
+/* Immagine del bot */
 .bot-img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
   z-index: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* Pulsante accanto */
-.side-by-side {
-  display: flex;
-  gap: 20px;
-  flex-direction: row;
-  align-items: flex-start;
+/* Emoji decorative */
+.emoji {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 0;
 }
 
-.invite-btn {
-  padding: 12px 18px;
-  background-color: #0078d4;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
+.swing-left {
+  animation: swingL 3s ease-in-out infinite;
+}
+.swing-right {
+  animation: swingR 4s ease-in-out infinite;
 }
 
-.invite-btn:hover {
-  background-color: #005fa3;
-  transform: scale(1.05);
-}
-
-/* Dark Mode tweaks */
-body.dark-mode .rays-center {
-  background: radial-gradient(circle, #3498db 0%, #50b7f5 100%);
-}
-
-body.dark-mode .invite-btn {
-  background-color: #50b7f5;
-  color: #1c1c1c;
-}
-
-body.dark-mode .invite-btn:hover {
-  background-color: #3498db;
-}
-
-@keyframes rotate-rays {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* Posizioni delle emoji (personalizzabili) */
+.emoji
