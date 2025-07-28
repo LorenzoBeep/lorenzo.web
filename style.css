@@ -470,3 +470,7 @@ body.dark-mode .titolo-piccolo,
 body.dark-mode .intro-breve {
   color: #ddd;
 }
+
+body.dark-mode .intro-section {
+  background-color: #1a1a1a; /* colore scuro per la modalità dark */
+}
