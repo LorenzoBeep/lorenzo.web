@@ -444,7 +444,7 @@ body.dark-mode .bordered-text .png-content {
 }
 
 .nome-sotto {
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* era 1.2rem, ora più grande */
   font-weight: bold;
   color: #333;
   margin: 0;
