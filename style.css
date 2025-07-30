@@ -655,3 +655,69 @@ body {
   border: 6px solid transparent;
   border-top-color: #333;
 }
+
+.intro-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.intro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.status-widget {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.online {
+  background-color: green;
+}
+
+.status-dot.offline {
+  background-color: red;
+}
+
+.status-label {
+  font-weight: bold;
+}
+
+.tooltip-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip-btn:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
