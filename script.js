@@ -56,6 +56,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+const popup = document.querySelector('.exit-popup');
+
+function openPopup() {
+  popup.classList.remove('uscita');
+  popup.classList.add('entrata');
+}
+
+function closePopup() {
+  popup.classList.remove('entrata');
+  popup.classList.add('uscita');
+
+  popup.addEventListener('animationend', () => {
+    popup.parentElement.style.display = 'none'; // O rimuovi completamente
+  }, { once: true });
+}
   // 🟡 Chiudi barra WIP
  if (closeNotice) {
   closeNotice.addEventListener("click", () => {
