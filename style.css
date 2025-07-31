@@ -630,3 +630,32 @@ body.dark-mode .invite-btn {
 body.dark-mode .invite-btn:hover {
   background-color: #3498db;
 }
+
+.language-switcher {
+  margin-left: 10px;
+}
+
+#language-select {
+  font-size: 1rem;
+  padding: 6px 10px;
+  border: 2px solid #0078d4;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #0078d4;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#language-select:hover {
+  background-color: #f0f8ff;
+}
+
+body.dark-mode #language-select {
+  background-color: #222;
+  color: #50b7f5;
+  border-color: #50b7f5;
+}
+
+body.dark-mode #language-select:hover {
+  background-color: #333;
+}
