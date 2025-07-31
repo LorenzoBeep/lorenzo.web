@@ -96,7 +96,9 @@ function closePopup() {
 
 async function caricaLingua(codice) {
   try {
-    const response = await fetch(`lingua/${codice}.lang`);
+    const response = await fetch(`lingua/${codice}.json`);
+    if (!response.ok) throw new Error(`File ${codice}.json non trovato`);
+
     const dati = await response.json();
 
     document.querySelectorAll('[data-key]').forEach(el => {
@@ -104,22 +106,20 @@ async function caricaLingua(codice) {
       if (dati[chiave]) {
         el.textContent = dati[chiave];
       } else {
-        console.warn(`Chiave "${chiave}" non trovata in ${codice}.lang`);
+        console.warn(`Chiave "${chiave}" non trovata in ${codice}.json`);
       }
     });
 
     localStorage.setItem('lingua', codice);
   } catch (error) {
-    console.error(`Errore nel caricamento della lingua "${codice}":`, error);
+    console.error(`Errore nel caricamento della lingua '${codice}':`, error.message);
   }
 }
 
-// Cambio lingua da <select>
 document.getElementById('language-select').addEventListener('change', e => {
   caricaLingua(e.target.value);
 });
 
-// Lingua salvata o default
 const linguaSalvata = localStorage.getItem('lingua') || 'ita';
 document.getElementById('language-select').value = linguaSalvata;
 caricaLingua(linguaSalvata);
