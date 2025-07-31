@@ -120,6 +120,6 @@ document.getElementById('language-select').addEventListener('change', e => {
 });
 
 // Lingua salvata o default
-const linguaSalvata = localStorage.getItem('lingua') || 'it';
+const linguaSalvata = localStorage.getItem('lingua') || 'ita';
 document.getElementById('language-select').value = linguaSalvata;
 caricaLingua(linguaSalvata);
