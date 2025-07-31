@@ -93,3 +93,33 @@ function closePopup() {
     document.body.classList.add("mobile-mode");
   }
 });
+
+async function caricaLingua(codice) {
+  try {
+    const response = await fetch(`lingua/${codice}.lang`);
+    const dati = await response.json();
+
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const chiave = el.getAttribute('data-key');
+      if (dati[chiave]) {
+        el.textContent = dati[chiave];
+      } else {
+        console.warn(`Chiave "${chiave}" non trovata in ${codice}.lang`);
+      }
+    });
+
+    localStorage.setItem('lingua', codice);
+  } catch (error) {
+    console.error(`Errore nel caricamento della lingua "${codice}":`, error);
+  }
+}
+
+// Cambio lingua da <select>
+document.getElementById('language-select').addEventListener('change', e => {
+  caricaLingua(e.target.value);
+});
+
+// Lingua salvata o default
+const linguaSalvata = localStorage.getItem('lingua') || 'it';
+document.getElementById('language-select').value = linguaSalvata;
+caricaLingua(linguaSalvata);
