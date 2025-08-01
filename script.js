@@ -116,10 +116,15 @@ async function caricaLingua(codice) {
   }
 }
 
+// Al cambio selettore: aggiorna subito
 document.getElementById('language-select').addEventListener('change', e => {
-  caricaLingua(e.target.value);
+  const nuovaLingua = e.target.value;
+  caricaLingua(nuovaLingua);
 });
 
-const linguaSalvata = localStorage.getItem('lingua') || 'ita';
-document.getElementById('language-select').value = linguaSalvata;
-caricaLingua(linguaSalvata);
+// All'avvio: carica la lingua salvata
+document.addEventListener('DOMContentLoaded', () => {
+  const linguaSalvata = localStorage.getItem('lingua') || 'ita';
+  document.getElementById('language-select').value = linguaSalvata;
+  caricaLingua(linguaSalvata);
+});
