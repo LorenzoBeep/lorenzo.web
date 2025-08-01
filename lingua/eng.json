@@ -18,4 +18,8 @@
   "CyberBottyInviteButton": "Invite to your Server",
   "WIP": "W.I.P!",
   "ReservedForFuture": "Something will arrive here. But what? 🤔"
+  "ExtLinkStrong": "Wait, slow down! 🚧",
+  "ExtLinkText": "You're about to exit this site. Remember to pay attention to any malicious links!",
+  "ExtLinkOKButton": "Got it",
+  "ExtLinkNopeButton": "Wait, no!"
 }
