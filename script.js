@@ -36,12 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
       confirmOverlay.className = "exit-overlay";
       confirmOverlay.innerHTML = `
         <div class="exit-popup">
-          <p><strong data-key="ExtLinkStrong">Aspetta, frena!</strong> 🚧<br data-key="ExtLinkText">Stai per uscire da questo sito. Ricorda di stare attento!</p>
-          <div class="popup-buttons">
-            <button class="exit-confirm" data-key="ExtLinkOKButton">Ho capito</button>
-            <button class="exit-cancel" data-key="ExtLinkNopeButton">Aspetta, no!</button>
-          </div>
-        </div>
+  <p>
+    <strong data-key="ExtLinkStrong">Aspetta, frena!</strong> 🚧<br>
+    <span data-key="ExtLinkText">Stai per uscire da questo sito. Ricorda di stare attento!</span>
+  </p>
+  <div class="popup-buttons">
+    <button class="exit-confirm" data-key="ExtLinkOKButton">Ho capito</button>
+    <button class="exit-cancel" data-key="ExtLinkNopeButton">Aspetta, no!</button>
+  </div>
+</div>
       `;
       document.body.appendChild(confirmOverlay);
 
