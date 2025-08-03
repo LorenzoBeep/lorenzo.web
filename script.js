@@ -48,9 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       document.body.appendChild(confirmOverlay);
       function mostraPopup() {
-  document.querySelector('.exit-popup').style.display = 'block';
-  aggiornaTestiLinguaCorrente(); // 🔁 forza la traduzione
-        console.log("Testo popup:", document.querySelector('[data-key="ExtLinkText"]')?.textContent);
+  function mostraPopup() {
+  document.querySelector('.exit-popup').style.display = 'flex'; // o 'block'
+  aggiornaPopupTesti(); // 🔁 aggiorna i testi al momento giusto
+  }
       }
 
       confirmOverlay.querySelector(".exit-confirm").addEventListener("click", () => {
@@ -149,6 +150,21 @@ function aggiornaTestiLinguaCorrente() {
         if (dati[chiave]) {
           el.textContent = dati[chiave];
           console.log("Lingua caricata:", localStorage.getItem('lingua'));
+        }
+      });
+    });
+}
+
+function aggiornaPopupTesti() {
+  const lingua = localStorage.getItem('lingua') || 'ita';
+  fetch(`lingua/${lingua}.json`)
+    .then(res => res.json())
+    .then(dati => {
+      const chiavi = ["ExtLinkStrong", "ExtLinkText", "ExtLinkOKButton", "ExtLinkNopeButton"];
+      chiavi.forEach(chiave => {
+        const el = document.querySelector(`[data-key="${chiave}"]`);
+        if (el && dati[chiave]) {
+          el.textContent = dati[chiave];
         }
       });
     });
