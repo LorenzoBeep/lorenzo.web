@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
       `;
       document.body.appendChild(confirmOverlay);
+      function mostraPopup() {
+  document.querySelector('.exit-popup').style.display = 'block';
+  aggiornaTestiLinguaCorrente(); // 🔁 forza la traduzione
+      }
 
       confirmOverlay.querySelector(".exit-confirm").addEventListener("click", () => {
         window.open(destination, "_blank");
@@ -131,3 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('language-select').value = linguaSalvata;
   caricaLingua(linguaSalvata);
 });
+
+function aggiornaTestiLinguaCorrente() {
+  const lingua = localStorage.getItem('lingua') || 'ita';
+  fetch(`lingua/${lingua}.json`)
+    .then(res => res.json())
+    .then(dati => {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const chiave = el.getAttribute('data-key');
+        if (dati[chiave]) {
+          el.textContent = dati[chiave];
+        }
+      });
+    });
+}
