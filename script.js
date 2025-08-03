@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       function mostraPopup() {
   document.querySelector('.exit-popup').style.display = 'block';
   aggiornaTestiLinguaCorrente(); // 🔁 forza la traduzione
+        console.log("Testo popup:", document.querySelector('[data-key="ExtLinkText"]')?.textContent);
       }
 
       confirmOverlay.querySelector(".exit-confirm").addEventListener("click", () => {
@@ -127,12 +128,14 @@ async function caricaLingua(codice) {
 document.getElementById('language-select').addEventListener('change', e => {
   const nuovaLingua = e.target.value;
   caricaLingua(nuovaLingua);
+  console.log("Lingua caricata:", localStorage.getItem('lingua'));
 });
 
 // All'avvio: carica la lingua salvata
 document.addEventListener('DOMContentLoaded', () => {
   const linguaSalvata = localStorage.getItem('lingua') || 'ita';
   document.getElementById('language-select').value = linguaSalvata;
+  console.log("Lingua caricata:", localStorage.getItem('lingua'));
   caricaLingua(linguaSalvata);
 });
 
@@ -145,6 +148,7 @@ function aggiornaTestiLinguaCorrente() {
         const chiave = el.getAttribute('data-key');
         if (dati[chiave]) {
           el.textContent = dati[chiave];
+          console.log("Lingua caricata:", localStorage.getItem('lingua'));
         }
       });
     });
