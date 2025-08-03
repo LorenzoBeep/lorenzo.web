@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       confirmOverlay.innerHTML = `
         <div class="exit-popup">
   <p>
-    <strong data-key="ExtLinkStrong">Aspetta, frena!</strong> 🚧<br>
+    <strong data-key="ExtLinkStrong">Aspetta, frena! 🚧</strong><br>
     <span data-key="ExtLinkText">Stai per uscire da questo sito. Ricorda di stare attento!</span>
   </p>
   <div class="popup-buttons">
