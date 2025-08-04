@@ -176,10 +176,10 @@ fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedataba
     const stato = data.value;
     const el = document.getElementById("lorenzo-status");
 
-    if (stato === 1) {
+    if (stato === "online") {
       el.textContent = "🟢 Online";
       el.style.color = "#0f0";
-    } else if (stato === 0) {
+    } else if (stato === "offline") {
       el.textContent = "🔴 Offline";
       el.style.color = "#f00";
     } else {
