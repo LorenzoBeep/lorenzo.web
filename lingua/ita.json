@@ -21,5 +21,11 @@
   "ExtLinkStrong": "Aspetta, frena! 🚧",
   "ExtLinkText": "Stai per uscire da questo sito. Ricorda di stare attento!",
   "ExtLinkOKButton": "Ho capito",
-  "ExtLinkNopeButton": "Aspetta, no!"
+  "ExtLinkNopeButton": "Aspetta, no!",
+  "RandomCatsStrong": "Immagini a caso di animali",
+  "RandomCatsParagraph": "Clicca uno dei due pulsanti e non te ne pentirai!",
+  "CatButton": "Gattoo!!",
+  "DogButton": "Canee!!",
+  "RandomCatsParagraphCat": "Miaaooooo!!",
+  "RandomCatsParagraphDog": "Baaaauuuu!!"
 }
