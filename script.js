@@ -170,10 +170,20 @@ function aggiornaPopupTesti() {
     });
 }
 
-fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedatabase.app/status.json")
+const URL = "https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedatabase.app/status/value.json";
+
+fetch(URL)
   .then(res => res.json())
   .then(data => {
-    const stato = data.value;
-    const el = document.getElementById("lorenzo-status");
-    el.textContent = stato === 1 ? "🟢 Online" : "🔴 Offline";
+    if (data.key === "js8w72yebxjzkw82uhwi736bxkqp27") {
+      const stato = data.value;
+      const el = document.getElementById("lorenzo-status");
+      el.textContent = stato === 1 ? "🟢 Online" : "🔴 Offline";
+    } else {
+      document.getElementById("lorenzo-status").textContent = "❌ Accesso negato";
+    }
+  })
+  .catch(err => {
+    document.getElementById("lorenzo-status").textContent = "⚠️ Errore di connessione";
+    console.error("Errore:", err);
   });
