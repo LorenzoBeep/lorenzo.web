@@ -174,10 +174,22 @@ fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedataba
   .then(res => res.json())
   .then(data => {
     const stato = data.value;
-    document.getElementById("lorenzo-status").textContent =
-      stato === 1 ? "🟢 Online" : "🔴 Offline";
+    const el = document.getElementById("lorenzo-status");
+
+    if (stato === 1) {
+      el.textContent = "🟢 Online";
+      el.style.color = "#0f0";
+    } else if (stato === 0) {
+      el.textContent = "🔴 Offline";
+      el.style.color = "#f00";
+    } else {
+      el.textContent = "⚠️ Stato sconosciuto";
+      el.style.color = "#fff";
+    }
   })
   .catch(err => {
-    document.getElementById("lorenzo-status").textContent = "⚠️ Errore di connessione";
+    const el = document.getElementById("lorenzo-status");
+    el.textContent = "⚠️ Errore di connessione";
+    el.style.color = "#fff";
     console.error("Errore:", err);
   });
