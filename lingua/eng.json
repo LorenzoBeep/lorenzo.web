@@ -21,5 +21,11 @@
   "ExtLinkStrong": "Wait, slow down! 🚧",
   "ExtLinkText": "You're about to exit this site. Remember to pay attention to any malicious links!",
   "ExtLinkOKButton": "Got it",
-  "ExtLinkNopeButton": "Wait, no!"
+  "ExtLinkNopeButton": "Wait, no!",
+  "RandomCatsStrong": "Random animal images",
+  "RandomCatsParagraph": "Click one of the two buttons and you won't regret it! ",
+  "CatButton": "Caaat!!",
+  "DogButton": "Doooog!!",
+  "RandomCatsParagraphCat": "Meeowwwww!!",
+  "RandomCatsParagraphDog": "Baaaark!!" 
 }
