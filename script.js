@@ -192,3 +192,17 @@ fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedataba
     el.style.color = "#fff";
     console.error("Errore:", err);
   });
+
+function mostraGatto() {
+  fetch("https://api.thecatapi.com/v1/images/search")
+    .then(res => res.json())
+    .then(data => {
+      const imgUrl = data[0].url;
+      document.getElementById("animal-img").src = imgUrl;
+      document.getElementById("animal-text").textContent = "Miaoooo!!!";
+    })
+    .catch(err => {
+      document.getElementById("animal-text").textContent = "😿 Errore nel caricamento!";
+      console.error("Errore:", err);
+    });
+}
