@@ -170,10 +170,9 @@ function aggiornaPopupTesti() {
     });
 }
 
-fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedatabase.app/status.json")
+fetch("https://online-e-offline-da-casa-default-rtdb.europe-west1.firebasedatabase.app/stato.json")
   .then(res => res.json())
-  .then(data => {
-    const stato = data.value;
+  .then(stato => {
     const el = document.getElementById("lorenzo-status");
 
     if (stato === "online") {
