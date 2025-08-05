@@ -812,3 +812,55 @@ body.dark-mode .invite-btn:hover {
   font-style: italic;
   color: #666;
 }
+
+.cyberbotty-header {
+  text-align: center;
+  padding: 30px;
+}
+
+.cyberbotty-icon {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.invite-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #00aaff;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.invite-btn:hover {
+  background-color: #0088cc;
+}
+
+.cyberbotty-features {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #ddd;
+}
+
+.cyberbotty-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cyberbotty-features li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.cyberbotty-status {
+  padding: 20px;
+  font-style: italic;
+  color: #666;
+}
