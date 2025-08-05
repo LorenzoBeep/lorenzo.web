@@ -779,3 +779,36 @@ body.dark-mode .invite-btn:hover {
   margin: 5px 0 0;
   color: #555;
 }
+
+.project-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.project-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.project-details {
+  padding: 20px;
+}
+
+.project-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-details li {
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+.project-status {
+  padding: 20px;
+  font-style: italic;
+  color: #666;
+}
