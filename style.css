@@ -741,3 +741,41 @@ body.dark-mode .invite-btn:hover {
   color: #aaa;
   pointer-events: none;
 }
+
+.project-folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.project-folder {
+  display: flex;
+  align-items: center;
+  background-color: #eaeaea;
+  border: 2px solid #ccc;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.project-folder:hover {
+  background-color: #dcdcdc;
+}
+
+.folder-icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+
+.folder-info h2 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #333;
+}
+
+.folder-info p {
+  margin: 5px 0 0;
+  color: #555;
+}
