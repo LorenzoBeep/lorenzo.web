@@ -206,3 +206,17 @@ function mostraGatto() {
       console.error("Errore:", err);
     });
 }
+
+function mostraCane() {
+  fetch("https://api.thedogapi.com/v1/images/search")
+    .then(res => res.json())
+    .then(data => {
+      const imgUrl = data[0].url;
+      document.getElementById("animal-img").src = imgUrl;
+      document.getElementById("animal-text").textContent = "Bauuuu!!!";
+    })
+    .catch(err => {
+      document.getElementById("animal-text").textContent = "🐶 Errore nel caricamento!";
+      console.error("Errore:", err);
+    });
+}
