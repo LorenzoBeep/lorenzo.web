@@ -5,7 +5,7 @@
   <title>Progetti - Lorenzo.Web</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="icon" href="../immagini/favicon.ico" type="image/x-icon">
-  <script src="../script.js" defer></script> <!-- JS incluso -->
+  <script src="../script.js" defer></script>
 </head>
 <body>
   <nav class="navbar">
@@ -14,26 +14,24 @@
 
   <main>
     <section class="wip-message">
-      <h1>I miei Progetti</h1>
+      <h1>📁 I miei Progetti</h1>
       <p>Qui troverai tutti i miei lavori, esperimenti e idee geniali!</p>
     </section>
 
-    <section class="project-list">
-      <div class="project-card">
-        <img src="../immagini/cyberbotty.png" alt="CyberBotty" class="project-icon">
-        <div class="project-info">
+    <section class="project-folder-list">
+      <div class="project-folder" onclick="location.href='/lorenzo.web/projects/cyberbotty/'">
+        <img src="../immagini/cartella.png" alt="CyberBotty" class="folder-icon">
+        <div class="folder-info">
           <h2>CyberBotty</h2>
           <p>Il mio bot Discord! Comandi utili e divertenti. Ancora in sviluppo!</p>
-          <a href="/projects/cyberbotty.html" class="project-link">Scopri di più</a>
         </div>
       </div>
 
-      <div class="project-card">
-        <img src="../immagini/segnaposto.png" alt="Non ancora..." class="project-icon">
-        <div class="project-info">
+      <div class="project-folder" onclick="location.href='#'">
+        <img src="../immagini/cartella.png" alt="Progetto Misterioso" class="folder-icon">
+        <div class="folder-info">
           <h2>Progetto Misterioso</h2>
           <p>Ancora SUPER DUPER top secret... ma arriverà qualcosa di epico! WWWOOOOWWW!!!!</p>
-          <a href="#" class="project-link disabled">Non disponibile</a>
         </div>
       </div>
     </section>
