@@ -667,6 +667,7 @@ body.dark-mode #language-select:hover {
 
 .invite-btn {
   padding: 12px 20px;
+  background-color: #0055d4;
   color: white;
   font-weight: bold;
   border-radius: 8px;
