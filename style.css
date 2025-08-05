@@ -700,10 +700,10 @@ body.dark-mode .invite-btn:hover {
 .project-card {
   display: flex;
   align-items: center;
-  background-color: #222;
+  background-color: #f0f0f0; /* Chiaro! */
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .project-icon {
@@ -712,22 +712,32 @@ body.dark-mode .invite-btn:hover {
   object-fit: cover;
   border-radius: 10px;
   margin-right: 20px;
+  border: 2px solid #ccc;
 }
 
 .project-info h2 {
   margin: 0;
   font-size: 1.5em;
+  color: #333;
+}
+
+.project-info p {
+  color: #555;
 }
 
 .project-link {
   display: inline-block;
   margin-top: 10px;
-  color: #00aaff;
+  color: #0077cc;
   text-decoration: none;
   font-weight: bold;
 }
 
+.project-link:hover {
+  text-decoration: underline;
+}
+
 .project-link.disabled {
-  color: #888;
+  color: #aaa;
   pointer-events: none;
 }
