@@ -664,13 +664,3 @@ body.dark-mode #language-select:hover {
   gap: 20px;
   margin-top: 30px; 
 }
-
-.invite-btn {
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 8px;
-  text-decoration: none;
-  background-color: #444;
-  color: white;
-  transition: background-color 0.3s;
-}
