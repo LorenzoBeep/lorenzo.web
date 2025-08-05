@@ -325,13 +325,13 @@ body.dark-mode .notice-close {
   padding: 8px 12px;
   display: inline-flex;
   align-items: center;
-  height: 25px;           /* 👈 altezza coerente */
+  height: 25px;
   box-sizing: border-box;
   vertical-align: middle;
 }
 
 .navbar .nav-link-text {
-  margin-top: 2px;        /* 👈 se serve piccola correzione verticale */
+  margin-top: 2px;
 }
 
 body.dark-mode .nav-link-text {
@@ -483,7 +483,7 @@ body.dark-mode .bordered-text .png-content {
 }
 
 .nome-sotto {
-  font-size: 1.5rem; /* era 1.2rem, ora più grande */
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   margin: 0;
@@ -511,18 +511,17 @@ body.dark-mode .intro-breve {
 }
 
 body.dark-mode .intro-section {
-  background-color: #1a1a1a; /* colore scuro per la modalità dark */
+  background-color: #1a1a1a;
 }
 
 .bot-showcase {
   display: flex;
   gap: 30px;
   padding: 40px 20px;
-  align-items: center; /* ✅ centratura verticale */
+  align-items: center;
   justify-content: center;
 }
 
-/* ✅ Cornice 200×400 esatta */
 .emoji-frame {
   width: 225px;
   height: 400px;
@@ -575,11 +574,10 @@ body.dark-mode .intro-section {
   50% { transform: rotate(-6deg); }
 }
 
-/* ✅ Contenuto con bordi e pulsante centrato */
 .content-wrap {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ← centratura verticale */
+  justify-content: center;
   gap: 20px;
   flex: 1;
   padding: 20px;
@@ -591,7 +589,7 @@ body.dark-mode .intro-section {
 
 .bot-button {
   display: flex;
-  justify-content: center; /* ✅ centratura orizzontale */
+  justify-content: center; 
 }
 
 .invite-btn {
@@ -603,7 +601,7 @@ body.dark-mode .intro-section {
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
-  margin: 0 auto; /* ✅ posizione centrale */
+  margin: 0 auto;
 }
 
 .invite-btn:hover {
@@ -658,4 +656,16 @@ body.dark-mode #language-select {
 
 body.dark-mode #language-select:hover {
   background-color: #333;
+}
+
+.bot-button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.invite-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
