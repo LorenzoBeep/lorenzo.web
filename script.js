@@ -208,7 +208,7 @@ function mostraGatto() {
 }
 
 function mostraCane() {
-  fetch("https://api.thedogapi.com/v1/images/search")
+  fetch("https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg")
     .then(res => res.json())
     .then(data => {
       const imgUrl = data[0].url;
