@@ -665,14 +665,39 @@ body.dark-mode #language-select:hover {
   margin-top: 30px; 
 }
 
-/* Stile per Light Mode */
 .invite-btn {
-  background-color: #00aaff;
+  padding: 12px 20px;
+  background-color: #0078d4;
   color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  margin: 0 auto;
 }
 
-/* Stile per Dark Mode */
-.dark-mode .invite-btn {
-  background-color: #444;
-  color: #eee;
+.invite-btn:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+/* Dark mode */
+body.dark-mode .emoji-frame {
+  background-color: #222;
+  border-color: #666;
+}
+
+body.dark-mode .content-wrap {
+  background-color: #222;
+  border-color: #666;
+}
+
+body.dark-mode .invite-btn {
+  background-color: #50b7f5;
+  color: #1c1c1c;
+}
+
+body.dark-mode .invite-btn:hover {
+  background-color: #3498db;
 }
