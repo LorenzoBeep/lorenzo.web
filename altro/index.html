@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Coloring the World</title>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    #flash-container {
+      width: 800px;
+      height: 600px;
+      margin: auto;
+      border: 2px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Coloring the World</h1>
+
+  <!-- Contenitore per il gioco -->
+  <div id="flash-container"></div>
+
+  <!-- Pulsante per attivare Ruffle -->
+  <button onclick="loadRuffle()">Usa Ruffle (mobile)</button>
+
+  <script>
+    function loadRuffle() {
+      const ruffle = window.RufflePlayer.newest();
+      const container = document.getElementById("flash-container");
+      const player = ruffle.createPlayer();
+      container.appendChild(player);
+      player.load("/altro/coloringtheworld.swf");
+    }
+  </script>
+</body>
+</html>
