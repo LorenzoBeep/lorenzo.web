@@ -864,13 +864,6 @@ body.dark-mode .invite-btn:hover {
   color: #666;
 }
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .dot {
   display: inline-block;
   width: 8px;
