@@ -260,5 +260,5 @@ function mostraTour() {
   container.appendChild(player);
   player.style.width = "550px";
   player.style.height = "400px";
-  player.load("/projects/am/aboutme.swf");
+  player.load("/lorenzo.web/projects/am/aboutme.swf");
 }
