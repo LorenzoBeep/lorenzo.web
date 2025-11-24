@@ -417,7 +417,6 @@ body.dark-mode .bordered-text .png-content {
   border-color: #666;
   background-color: #222;
   color: #ddd;
-}olor: #ddd;
 }
 
 /* Blocco con layout immagine a destra */
@@ -870,19 +869,6 @@ body.dark-mode .invite-btn:hover {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.navbar {
-  background-color: #0077cc;
-  padding: 15px;
-  text-align: center;
-}
-
-.logo {
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
-  position: relative;
 }
 
 .dot {
