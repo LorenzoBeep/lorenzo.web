@@ -220,3 +220,45 @@ function mostraCane() {
       console.error("Errore:", err);
     });
 }
+
+function mostraTour() {
+  // Crea un contenitore popup
+  let popup = document.createElement("div");
+  popup.id = "popup";
+  popup.style.position = "fixed";
+  popup.style.top = "50%";
+  popup.style.left = "50%";
+  popup.style.transform = "translate(-50%, -50%)";
+  popup.style.background = "#fff";
+  popup.style.border = "2px solid #333";
+  popup.style.padding = "10px";
+  popup.style.zIndex = "9999";
+
+  // Contenitore per Ruffle
+  let container = document.createElement("div");
+  container.id = "ruffle-container";
+  popup.appendChild(container);
+
+  // Pulsante chiudi
+  let closeBtn = document.createElement("span");
+  closeBtn.textContent = "Chiudi";
+  closeBtn.style.display = "block";
+  closeBtn.style.marginTop = "5px";
+  closeBtn.style.textAlign = "center";
+  closeBtn.style.cursor = "pointer";
+  closeBtn.style.color = "#5865F2";
+  closeBtn.style.fontWeight = "bold";
+  closeBtn.onclick = () => document.body.removeChild(popup);
+  popup.appendChild(closeBtn);
+
+  // Aggiungi popup al body
+  document.body.appendChild(popup);
+
+  // Carica Ruffle player
+  const ruffle = window.RufflePlayer.newest();
+  const player = ruffle.createPlayer();
+  container.appendChild(player);
+  player.style.width = "550px";
+  player.style.height = "400px";
+  player.load("/progetti/am/aboutme.swf");
+}
