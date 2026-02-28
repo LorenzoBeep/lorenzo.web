@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>LA VERITÀ</title>
+    <script>
+        if (sessionStorage.getItem('accessoAutorizzato') !== 'true') {
+            window.location.href = "../index.html"; 
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal" id="term">
+        <div class="line" style="color: red; opacity: 1;">[ACCESSO AUTORIZZATO - VERITÀ]</div>
+        <div id="output"></div>
+        <span class="cursor"></span>
+    </div>
+    <script src="la-verita.js"></script>
+</body>
+</html>
