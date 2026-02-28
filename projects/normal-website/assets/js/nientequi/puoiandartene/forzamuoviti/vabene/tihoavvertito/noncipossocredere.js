@@ -132,7 +132,7 @@ async function sequenzaFinaleVerita() {
         alert(msg);
     }
     sessionStorage.setItem('accessoAutorizzato', 'true');
-    window.location.href = "/verita/index.html";
+    window.location.href = "/projects/normal-website/verita/index.html";
 }
 
 
