@@ -6,16 +6,56 @@
 </head>
 <body style="background: #000; color: #333; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
 
+    <noscript>
+  	  <style>
+	        html, body { background: #000 !important; color: #fff !important; margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+	        .wrapper-nojs { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Courier New', monospace; }
+	        
+	        .no-js-msg {
+	            position: absolute; 
+	            opacity: 0; 
+	            text-align: center; 
+	            width: 80%;
+	            /* Animazione: appare (In), resta, scompare (Out) */
+	            animation: breathe 4s forwards;
+	        }
+	
+	        @keyframes breathe {
+	            0% { opacity: 0; transform: translateY(10px); }
+	            20% { opacity: 1; transform: translateY(0); }
+	            80% { opacity: 1; transform: translateY(0); }
+	            100% { opacity: 0; transform: translateY(-10px); }
+	        }
+	        .m4 { animation: sequence-final 3s forwards; }
+	        @keyframes sequence-final {
+	            0% { opacity: 0; transform: translateY(10px); }
+	            100% { opacity: 1; transform: translateY(0); }
+	        }
+	        .m1 { animation-delay: 1s; } 
+	        .m2 { animation-delay: 5s; }
+	        .m3 { animation-delay: 9s; } 
+	        .m4 { animation-delay: 13s; }
+	        
+	        ehi-chi-sei, script, password { display: none !important; }
+	    </style>
+	    
+	    <div class="wrapper-nojs">
+	        <div class="no-js-msg m1"><h1>Hmm... intelligente.</h1><p>Hai usato un browser senza JavaScript per attaccarmi.</p></div>
+	        <div class="no-js-msg m2"><h1>Fortunatamente, io sono meglio.</h1><p>Meglio di te... e di tutti.</p></div>
+	        <div class="no-js-msg m3"><h1>Quindi, vat-te-ne.</h1><p>E la prossima volta prendi JavaScript. Mi piace JavaScript.</p></div>
+	        <div class="no-js-msg m4"><h1>ADDIO.</h1></div>
+	        <meta http-equiv="refresh" content="16;url=https://www.youtube.com">
+	    </div>
+	</noscript>
+
     <ehi-chi-sei>
-        <!-- La nuova Matrioska avvolge l'H1 -->
         <cosa>
             <perchecontinui>
                 <noncenulla>
                     <maperche>
-			<!-- L'Esca: Invisibile all'occhio, irresistibile per l'hacker -->
-			<password style="display: none; visibility: hidden; opacity: 0;">
-  			  <img src="/assets/png/hmm/moltostrano/percheseiqua/vuoitrovarequalcosa/beh/nonpenso/ripensaci/altrimenti/leconseguenze/peggioreranno/conseguenze.png" alt="Segreto">
-			</password>
+                        <password style="display: none; visibility: hidden; opacity: 0;">
+                            <img src="/assets/png/hmm/moltostrano/percheseiqua/vuoitrovarequalcosa/beh/nonpenso/ripensaci/altrimenti/leconseguenze/peggioreranno/conseguenze.png" alt="Segreto">
+                        </password>
                         <percheperseveri>
                             <haha>
                                 <seipropriounbambino>
@@ -29,8 +69,6 @@
                 </noncenulla>
             </perchecontinui>
         </cosa>
-
-        <!-- Il resto rimane com'era prima -->
         <cosa-fai>
             <non-ce-nulla-qui>
                 <forza-va-fuori>
@@ -42,7 +80,6 @@
         </cosa-fai>
     </ehi-chi-sei>
 
-    <!-- Il percorso infinito -->
     <script src="assets/js/nientequi/puoiandartene/forzamuoviti/vabene/tihoavvertito/noncipossocredere.js"></script>
 </body>
 </html>
