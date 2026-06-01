@@ -1,12 +1,9 @@
 body {
-  font-family: 'Segoe UI'; 
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   background-color: #f5f5f5;
-  
-  /* Opzionale: i font pixel rendono meglio con dimensioni specifiche */
-  font-size: 12px; 
-  image-rendering: pixelated; /* Mantiene i bordi netti */
 }
+
 
 
 /* Navbar */
