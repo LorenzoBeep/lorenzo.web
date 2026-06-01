@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspect Further</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #30363d; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #2ea043; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(46, 160, 67, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; max-width: 800px; box-sizing: border-box; }
+
+        .grid { display: flex; gap: 15px; margin: 30px 0; flex-wrap: wrap; justify-content: center; max-width: 650px; }
+        .level-box { width: 100px; height: 100px; border: 2px solid #30363d; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px; background: #161b22; transition: 0.2s; box-sizing: border-box; text-align: center; }
+        .level-box.unlocked { border-color: #2ea043; color: #2ea043; }
+        .level-box.selected { background: #2ea043; color: #0d1117; font-weight: bold; }
+        .level-box.locked { border-color: #da3633; color: #da3633; opacity: 0.6; }
+        .level-box.hard-mode { border-color: #f85149; color: #f85149; }
+        .level-box.hard-mode.unlocked { border-color: #ff7b72; color: #ff7b72; }
+        .level-box.hard-mode.selected { background: #f85149; color: #0d1117; }
+        .lock-icon { font-size: 11px; margin-top: 5px; }
+
+
+        .action-group { display: flex; gap: 20px; align-items: center; margin-top: 10px; }
+        #playBtn { padding: 15px 40px; font-size: 18px; font-family: inherit; background-color: #2ea043; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4); }
+        #playBtn:disabled { background-color: #30363d; color: #8b949e; cursor: not-allowed; box-shadow: none; }
+
+
+        #hardModeBtn { display: none; padding: 15px 30px; font-size: 16px; font-family: inherit; background-color: #da3633; color: white; border: 2px solid #f85149; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 0 15px rgba(218, 54, 51, 0.4); animation: pulse-red 1.5s infinite alternate; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 10px rgba(218, 54, 51, 0.4); } 100% { box-shadow: 0 0 25px rgba(248, 81, 73, 0.8); } }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <p id="menuMessage">Seleziona un livello inserendo la password corretta per sbloccarlo.</p>
+
+        <div class="grid" id="levelsGrid">
+            <!-- Saranno generati i quadratini dei livelli dopo, nello script JS! -->
+        </div>
+
+        <div class="action-group">
+            <button id="playBtn" disabled onclick="startGame()">AVVIA LIVELLO</button>
+            <button id="hardModeBtn" onclick="enableHardModeGrid()">LIVELLI EXTRA</button>
+        </div>
+    <a href="#" id="resetLink" onclick="resetSaveData(); return false;"
+   style="margin-top:30px;color:#8b949e;font-size:12px;text-decoration:underline;">
+    Cancella i dati di salvataggio
+</a>
+    </div>
+
+        <script>
+        let selectedLevel = null;
+        let hardModeActive = false;
+
+        const levelPaths = {
+            1: '_level_1_4829a/index.html',
+            2: '_level_2_9104b/index.html',
+            3: '_level_3_5723c/index.html',
+            4: '_level_4_8943d/index.html',
+            5: '_level_5_9126e/index.html',
+            6: '_level_6_0957f/index.html',
+            7: '_level_7_1184g/index.html',
+            8: '_level_8_3845h/index.html',
+            9: '_level_9_4862i/index.html',
+            10: '_level_10_6372j/index.html',
+            11: '_level_11_9451k/index.html',
+            12: '_level_12_6027l/index.html',
+            13: '_level_13_7489m/index.html',
+            14: '_level_14_0127n/index.html',
+            15: '_level_15_7295o/index.html',
+            // Dopo questi 15, ci stanno i livelli Hard Mode:
+            16: '_level_16_6737p/index.html',
+            17: '_level_17_0951q/index.html',
+            18: '_level_18_4619r/index.html',
+            19: '_level_19_1843s/index.html',
+            20: '_level_20_5816t/index.html',
+            21: '_level_21_7325u/index.html',
+            22: '_level_22_9146v/index.html',
+            23: '_level_23_0417w/index.html',
+            24: '_level_24_9571x/index.html',
+            25: '_level_25_6267y/index.html',
+            26: '_level_26_1298z/index.html'
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            buildGrid(15);
+            checkProgress();
+        });
+
+        function buildGrid(maxLevelToRender) {
+            const grid = document.getElementById('levelsGrid');
+            grid.innerHTML = ''; 
+
+            for (let i = 1; i <= maxLevelToRender; i++) {
+                const box = document.createElement('div');
+                box.id = `lvl${i}`;
+                box.className = 'level-box locked';
+                if (i > 15) box.classList.add('hard-mode');
+                
+                if (i === 1) box.className = 'level-box unlocked';
+
+                box.onclick = () => unlockAndSelect(i);
+                box.innerHTML = `<span>Lvl ${i}</span>` + (i > 1 ? `<span class="lock-icon">🔒 Bloccato</span>` : '');
+                grid.appendChild(box);
+            }
+        }
+
+        function checkProgress() {
+            const maxUnlocked = parseInt(localStorage.getItem('maxUnlockedLevel')) || 1;
+            
+            for (let i = 2; i <= Math.min(maxUnlocked, 26); i++) {
+                const box = document.getElementById(`lvl${i}`);
+                if (box) {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                    const lockIcon = box.querySelector('.lock-icon');
+                    if (lockIcon) lockIcon.remove();
+                }
+            }
+
+            if (maxUnlocked >= 16) {
+                document.getElementById('hardModeBtn').style.display = 'block';
+            }
+        }
+
+        function enableHardModeGrid() {
+            hardModeActive = true;
+            document.getElementById('menuMessage').innerHTML = "<span style='color:#f85149; font-weight:bold;'>HARD MODE:</span> Non è ancora finita...";
+            document.getElementById('hardModeBtn').style.display = 'none';
+            
+            buildGrid(26);
+            checkProgress();
+        }
+
+        function selectLevel(num) {
+            document.querySelectorAll('.level-box').forEach(box => box.classList.remove('selected'));
+            selectedLevel = num;
+            document.getElementById(`lvl${num}`).classList.add('selected');
+            document.getElementById('playBtn').disabled = false;
+        }
+
+        function unlockAndSelect(num) {
+            const box = document.getElementById(`lvl${num}`);
+            if (box.classList.contains('unlocked')) {
+                selectLevel(num);
+                return;
+            }
+
+            const userPassword = prompt(`Inserisci la password per sbloccare il Livello ${num} (Case-Sensitive):`);
+            if (userPassword === null) return; 
+
+            fetch('passwords.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const regex = new RegExp(`^lv${num}=(.*)$`, 'm');
+                    const match = text.match(regex);
+                    
+                    if (match && match[1].trim() === userPassword.trim()) {
+                        box.classList.remove('locked');
+                        box.classList.add('unlocked');
+                        const lockIcon = box.querySelector('.lock-icon');
+                        if (lockIcon) lockIcon.remove();
+                        
+                        const currentMax = parseInt(localStorage.getItem('maxUnlockedLevel')) || 1;
+                        if (num > currentMax) {
+                            localStorage.setItem('maxUnlockedLevel', num);
+                        }
+                        selectLevel(num);
+                    } else {
+                        alert("Password errata!");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file di verifica."));
+        }
+
+        function startGame() {
+            if (selectedLevel && levelPaths[selectedLevel]) {
+                window.location.href = levelPaths[selectedLevel];
+            }
+        }
+	function resetSaveData() {
+    const confirmed = confirm(
+        "Sei sicuro/a che vuoi cancellare i dati di salvataggio?\n\nNon li potrai ripristinare dopo aver confermato!"
+    );
+
+    if (confirmed) {
+        localStorage.clear();
+        location.reload();
+    }
+}
+    </script>
+
+</body>
+</html>

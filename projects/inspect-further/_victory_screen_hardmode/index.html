@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>🏆 WARGAME COMPLETATISSIMO! 🏆</title>
+    <style>
+        body { 
+            background-color: #0d1117; 
+            color: #da3633; 
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            overflow: hidden;
+        }
+        
+        .victory-container {
+            text-align: center;
+            background: #161b22;
+            border: 2px solid #2ea043;
+            border-radius: 12px;
+            padding: 50px 40px;
+            max-width: 700px;
+            box-shadow: 0 0 30px rgba(218, 54, 51, 0.4);
+            box-sizing: border-box;
+            animation: pulse-border 2s infinite alternate;
+        }
+
+        h1 {
+            color: #da3633;
+            font-size: 36px;
+            margin-top: 0;
+            text-shadow: 0 0 15px rgba(218, 54, 51, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .trophy {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: bounce 1.5s infinite;
+        }
+
+        p {
+            color: #c9d1d9;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .stats-box {
+            background: #0d1117;
+            border: 1px solid #da3633;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .highlight {
+            color: #da3633;
+            font-weight: bold;
+        }
+
+        .btn-menu {
+            padding: 15px 35px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            background-color: #da3633;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(218, 54, 51, 0.3);
+            transition: 0.2s;
+        }
+
+        .btn-menu:hover {
+            background-color: #da3633;
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse-border {
+            0% { border-color: #da3633; box-shadow: 0 0 20px rgba(218, 54, 51, 0.2); }
+            100% { border-color: #d84d4b; box-shadow: 0 0 45px rgba(216, 77, 75, 0.4); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="victory-container">
+        <div class="trophy">🏆🏆🏆</div>
+        <h1>MISSIONE COMPIUTA <i><small>(di nuovo!)</small></i></h1>
+        <p>Congratulazioni! Hai superato <strong>TUTTI</strong> i 26 livelli di sicurezza di <strong>INSPECT FURTHER</strong>.</p>
+        <p>Hai dimostrato un'altra veloce e fantastica conoscenza degli strumenti nei browser e un ottimo ragionamento durante analisi di codice client-side e comandi JavaScript!</p>
+        
+        <div class="stats-box">
+            Stato del Sistema: <span class="highlight">CONQUISTATO</span> | 
+            Grado Raggiunto: <span class="highlight" style="color: #56d364;">Maestro di Cifrature</span>
+        </div>
+
+        <p style="font-size: 14px; color: #8b949e; margin-bottom: 30px;">Grazie per aver giocato alla Hard Mode del Wargame!</p>
+
+        <a href="../index.html" class="btn btn-menu">Ritorna al Menu Principale 🛑</a>
+    </div>
+
+    <script async src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" onload="initConfetti()"></script>
+
+    <script>
+        function initConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 100, spread: 140, origin: { x: 0.1, y: 0.6 } });
+                confetti({ particleCount: 100, spread: 140, origin: { x: 0.9, y: 0.6 } });
+
+                let duration = 3 * 1000;
+                let end = Date.now() + duration;
+
+                (function frame() {
+                    confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 } });
+                    confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
+                    if (Date.now() < end) { requestAnimationFrame(frame); }
+                }());
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("Interfaccia grafica caricata.");
+        });
+    </script>
+</body>
+</html>

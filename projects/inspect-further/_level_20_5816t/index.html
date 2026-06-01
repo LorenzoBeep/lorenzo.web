@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 20 - Steganografia Zero-Width</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #f85149; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #f85149; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(248, 81, 73, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #f85149; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        
+        .text-container { background: #0d1117; border: 1px solid #30363d; padding: 25px; border-radius: 6px; margin: 20px 0; font-size: 16px; color: #c9d1d9; line-height: 1.5; }
+        
+        .btn-action { background-color: #58a6ff; color: #0d1117; border: none; padding: 10px 20px; font-family: inherit; font-weight: bold; border-radius: 5px; cursor: pointer; margin-bottom: 20px; transition: 0.2s; }
+        .btn-action:hover { background-color: #79c0ff; }
+        #copyStatus { font-size: 13px; color: #56d364; display: none; margin-top: -10px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 20</div>
+        <div class="box">
+            <h2>Spazi Invisibili</h2>
+            <p>La codifica Unicode contiene caratteri speciali progettati per scopi tipografici che hanno una larghezza pari a zero pixel. Visivamente non esistono, ma i computer sanno che sono lì.</p>
+            <p>Sotto questa descrizione è presente una stringa di testo apparentemente comune. Tra le sue lettere è stato iniettato un intero flusso di dati nascosto.</p>
+            
+            <div class="text-container" id="stegoTarget">Caricamento stringa protetta...</div>
+            
+            <button class="btn-action" onclick="copyStegoText()">Copia Stringa negli Appunti</button>
+            <div id="copyStatus">Testo copiato con successo!</div>
+
+            <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="../index.html" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #58a6ff; color: #58a6ff; background: transparent;">Menu Principale</a>
+                <button onclick="showHint(20)" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #e3b341; color: #e3b341; background: transparent;">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(21, '../_level_21_7325u/index.html')" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; background-color: #da3633; color: white; border: none; box-shadow: 0 4px 15px rgba(218, 54, 51, 0.3);">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let fullStegoText = "";
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('../passwords.txt')
+                .then(r => r.ok ? r.text() : "")
+                .then(text => {
+                    const dynamicPassword = getEntryValueFromText(text, 'lv21');
+                    if (dynamicPassword) {
+                        const publicMessage = "ACCESSO HARD MODE: Protocollo di verifica steganografica attivo. Nessuna anomalia testuale rilevata nei log di sistema.";
+                        
+                        fullStegoText = injectZeroWidthText(publicMessage, dynamicPassword);
+                        document.getElementById('stegoTarget').textContent = fullStegoText;
+                    } else {
+                        document.getElementById('stegoTarget').textContent = "Errore: 'lv21' non trovato in passwords.txt";
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('stegoTarget').textContent = "Errore nel caricamento della stringa.";
+                });
+        });
+
+        function injectZeroWidthText(publicText, secretText) {
+            const zwSpace = '\u200B';
+            Document.write = '\u200C';
+            const zwJoiner = '\u200C';
+            
+            let hiddenBinary = "";
+            for (let i = 0; i < secretText.length; i++) {
+                let bin = secretText.charCodeAt(i).toString(2);
+                hiddenBinary += "0".repeat(8 - bin.length) + bin;
+            }
+
+            let invisiblePayload = "";
+            for (let bit of hiddenBinary) {
+                invisiblePayload += (bit === '0') ? zwSpace : zwJoiner;
+            }
+            const mid = Math.floor(publicText.length / 2);
+            return publicText.substring(0, mid) + invisiblePayload + publicText.substring(mid);
+        }
+
+        function copyStegoText() {
+            if (!fullStegoText) return;
+            navigator.clipboard.writeText(fullStegoText).then(() => {
+                const status = document.getElementById('copyStatus');
+                status.style.display = 'block';
+                setTimeout(() => { status.style.display = 'none'; }, 3000);
+            }).catch(() => {
+                alert("Impossibile copiare automaticamente. Seleziona il testo manualmente.");
+            });
+        }
+
+        function getEntryValueFromText(text, key) {
+            const lines = text.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith(key + '=')) {
+                    const firstEqualIndex = line.indexOf('=');
+                    return line.substring(firstEqualIndex + 1).trim();
+                }
+            }
+            return null;
+        }
+
+        function showHint(num) {
+            fetch('../hints.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const hintValue = getEntryValueFromText(text, 'lv' + num);
+                    if (hintValue) {
+                        alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`);
+                    } else {
+                        alert("Nessun suggerimento configurato per questo livello.");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file hints.txt."));
+        }
+
+        function checkNextLevelPassword(targetLevelNum, targetUrl) {
+            const userPassword = prompt(`Inserisci la password del Livello ${targetLevelNum} per continuare:`);
+            if (userPassword === null) return;
+            
+            fetch('../passwords.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const correctPassword = getEntryValueFromText(text, 'lv' + targetLevelNum);
+                    
+                    if (correctPassword && correctPassword === userPassword.trim()) {
+                        localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                        window.location.href = targetUrl;
+                    } else {
+                        alert("Password errata!");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file passwords.txt."));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 9 - Traffico Rete</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #30363d; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #2ea043; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(46, 160, 67, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #2ea043; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-menu { border: 1px solid #58a6ff; color: #58a6ff; background: transparent; }
+        .btn-hint { border: 1px solid #e3b341; color: #e3b341; background: transparent; }
+        .btn-next { background-color: #2ea043; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 9</div>
+        <div class="box">
+            <h2>Intercettazione Traffico</h2>
+            <p>I dati non sono sempre scritti all'interno della pagina. Spesso viaggiano nascosti nei parametri delle richieste di rete.</p>
+            <p>Apri l'Ispeziona Elemento e spostati sulla scheda <strong>"Network" (Rete)</strong>.</p>
+            <p><strong>Aggiorna la pagina (F5)</strong> per iniziare la registrazione, seleziona il filtro <strong>"JS"</strong> ed esamina i parametri dell'URL della richiesta chiamata <strong>"autenticazione.js"</strong>!</p>
+            
+            <div class="btn-group">
+                <a href="../index.html" class="btn btn-menu">Menu Principale</a>
+                <button onclick="showHint(9)" class="btn btn-hint">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(10, '../_level_10_6372j/index.html')" class="btn btn-next">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('../passwords.txt')
+                .then(r => r.ok ? r.text() : "")
+                .then(text => {
+                    const dynamicPassword = getEntryValueFromText(text, 'lv10');
+                    
+                    if (dynamicPassword) {
+                        const fakeScript = document.createElement('script');
+                        fakeScript.src = `autenticazione.js?token_sessione=valido&password_livello10=${encodeURIComponent(dynamicPassword)}`;
+                        
+                        fakeScript.onerror = () => {
+                            console.log("Inizializzazione sessione di rete completata.");
+                        };
+                        
+                        document.body.appendChild(fakeScript);
+                    } else {
+                        console.error("Configurazione errata: chiave 'lv10' non trovata in passwords.txt.");
+                    }
+                })
+                .catch(() => console.error("Errore nel caricamento iniziale di passwords.txt."));
+        });
+
+        function getEntryValueFromText(text, key) {
+            const lines = text.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith(key + '=')) {
+                    return line.split('=')[1].trim();
+                }
+            }
+            return null;
+        }
+
+        function showHint(num) {
+            fetch('../hints.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const hintValue = getEntryValueFromText(text, 'lv' + num);
+                    if (hintValue) {
+                        alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`);
+                    } else {
+                        alert("Nessun suggerimento configurato per questo livello.");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file hints.txt."));
+        }
+
+        function checkNextLevelPassword(targetLevelNum, targetUrl) {
+            const userPassword = prompt(`Inserisci la password del Livello ${targetLevelNum} per continuare:`);
+            if (userPassword === null) return;
+            
+            fetch('../passwords.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const correctPassword = getEntryValueFromText(text, 'lv' + targetLevelNum);
+                    
+                    if (correctPassword && correctPassword === userPassword.trim()) {
+                        localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                        window.location.href = targetUrl;
+                    } else {
+                        alert("Password errata! Controlla maiuscole e minuscole.");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file passwords.txt."));
+        }
+    </script>
+</body>
+</html>

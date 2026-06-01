@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 1 - Le Basi</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #30363d; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #2ea043; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(46, 160, 67, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #2ea043; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        .password { color: #2ea043; font-weight: bold; font-size: 32px; margin: 30px 0; letter-spacing: 2px; min-height: 38px; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-menu { border: 1px solid #58a6ff; color: #58a6ff; background: transparent; }
+        .btn-hint { border: 1px solid #e3b341; color: #e3b341; background: transparent; }
+        .btn-next { background-color: #2ea043; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 1</div>
+        <div class="box">
+            <h2>Risolvi l'enigma</h2>
+            <p>In questo gioco la risposta è spesso davanti ai tuoi occhi.</p>
+            <p>Usa la password qui sotto nel menu principale per sbloccare il livello 2:</p>
+            
+            <div class="password" id="displayPassword">...</div>
+            
+            <div class="btn-group">
+                <a href="../index.html" class="btn btn-menu">Menu Principale</a>
+                <button onclick="showHint(1)" class="btn btn-hint">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(2, '../_level_2_9104b/index.html')" class="btn btn-next">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('../passwords.txt')
+            .then(response => response.text())
+            .then(text => {
+                const match = text.match(/^lv2=(.*)$/m);
+                if (match) document.getElementById('displayPassword').textContent = match[1].trim();
+            })
+            .catch(() => document.getElementById('displayPassword').textContent = "Errore caricamento password");
+
+        function showHint(currentLevelNum) {
+            fetch('../hints.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const regex = new RegExp(`^lv${currentLevelNum}=(.*)$`, 'm');
+                    const match = text.match(regex);
+                    if (match) {
+                        alert(`💡 SUGGERIMENTO LIVELLO ${currentLevelNum}:\n\n${match[1].trim()}`);
+                    } else {
+                        alert("Nessun suggerimento trovato per questo livello.");
+                    }
+                })
+                .catch(() => alert("Impossibile caricare il suggerimento."));
+        }
+
+        function checkNextLevelPassword(targetLevelNum, targetUrl) {
+            const userPassword = prompt(`Inserisci la password del Livello ${targetLevelNum} per continuare:`);
+            if (userPassword === null) return;
+
+            fetch('../passwords.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const regex = new RegExp(`^lv${targetLevelNum}=(.*)$`, 'm');
+                    const match = text.match(regex);
+                    if (match && match[1].trim() === userPassword) {
+			localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                        window.location.href = targetUrl;
+                    } else {
+                        alert("Password errata! Controlla maiuscole e minuscole.");
+                    }
+                })
+                .catch(() => alert("Errore di rete durante la verifica della password."));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 26 - L'Enigma del Grande Maestro</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #da3633; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #da3633; font-size: 24px; font-weight: bold; text-shadow: 0 0 15px rgba(218, 54, 51, 0.4); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; max-width: 750px; box-sizing: border-box; }
+        .level-header { color: #da3633; font-size: 24px; font-weight: bold; margin-bottom: 15px; letter-spacing: 5px; text-shadow: 0 0 10px rgba(218, 54, 51, 0.3); }
+        .box { border: 2px solid #da3633; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 12px; width: 100%; box-shadow: 0 0 25px rgba(218, 54, 51, 0.15); box-sizing: border-box; }
+        
+        .monument-box { background: #0d1117; border: 1px dashed #da3633; padding: 25px; border-radius: 6px; font-size: 15px; color: #56d364; word-break: break-all; margin: 25px 0; letter-spacing: 1px; line-height: 1.6; text-align: left; max-height: 200px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO FINALE: LIVELLO 26</div>
+        <div class="box">
+            <h2 style="color: #ff7b72;">Le Cifrature Finali</h2>
+            <p>Sei arrivato alla fine degli enigmi. Davanti a te si erge l'ultima sfidfa: una sequenza crittografica stratificata attraverso algoritmi diversi.</p>
+            <p>Tanti codici antichi e protocolli moderni si fondono in questa stringa generata insieme. Decodificala strato dopo strato per completare l'opera!</p>
+	    <p>Trova l'ordine delle cifrature nel comando della console per trovare il rapporto! <strong>...ma forse non è solo questo?</strong></p>
+	    <p><small>Ma per trovare i codici per decifrarlo, forse ti serve un rapporto? Vedi la console per qualcosa sul rapporto.</small></p>
+            
+            <div id="monumentOutput" class="monument-box">Inizializzazione algoritmi storici combinati...</div>
+
+            <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap;">
+                <a href="../index.html" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #58a6ff; color: #58a6ff; background: transparent;">Menu Principale</a>
+                <button onclick="showHint(26)" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #e3b341; color: #e3b341; background: transparent;">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(27, '../_victory_screen_hardmode/index.html')" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; background-color: #2ea043; color: white; border: none; box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4);">RECLAMA LA VITTORIA 🏆</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+	});
+        window.rapporto_enigma = function() {
+            console.log("%c==================================================", "color: #da3633; font-weight: bold;");
+            console.log("%cRAPPORTO DEL ENIGMA 26", "color: #e3b341; font-weight: bold; font-size: 14px;");
+            console.log("%c==================================================", "color: #da3633; font-weight: bold;");
+            console.log("%cIl sistema utili 6 strati di cifratura sequenziale.", "color: #c9d1d9;");
+            console.log("%cPer decifrare il blocco monumentale, imposta i tuoi decifratori in questo ordine:", "color: #c9d1d9;");
+            console.log("\n%c  1. From Base64", "color: #58a6ff; font-weight: bold;");
+            console.log("%c  2. Vigenère Decode %c(CHIAVE DI CIFRATURA: ROSETTA)", "color: #58a6ff; font-weight: bold;", "color: #ff7b72; font-weight: bold;");
+            console.log("%c  3. Atbash", "color: #58a6ff; font-weight: bold;");
+            console.log("%c  4. ROT13", "color: #58a6ff; font-weight: bold;");
+            console.log("%c  5. From Base32", "color: #58a6ff; font-weight: bold;");
+            console.log("%c  6. From Hex", "color: #58a6ff; font-weight: bold;");
+            console.log("\n%cEsegui il comando in chiaro ottenuto per sbloccare la password finale!", "color: #56d364;");
+            console.log("%c==================================================", "color: #da3633; font-weight: bold;");
+            return "File di rapporto scaricato negli archivi locali.";
+        };
+
+            fetch('../passwords.txt')
+                .then(r => r.ok ? r.text() : "")
+                .then(text => {
+                    const finalPassword = getEntryValueFromText(text, 'lv27');
+                    
+                    if (finalPassword) {
+    const rawInstruction = `Non è ancora finita... l'ultima sfida è in _level_26_1298z/ultima_sfida/stop.png`;
+
+    let currentStr = rawInstruction;
+
+    currentStr = stringToHex(currentStr);
+    currentStr = encodeBase32(currentStr);
+    currentStr = encodeROT13(currentStr);
+    currentStr = encodeAtbash(currentStr);
+    currentStr = encodeVigenere(currentStr, "ROSETTA");
+    currentStr = btoa(unescape(encodeURIComponent(currentStr)));
+
+    document.getElementById('monumentOutput').textContent = currentStr;
+}
+       });
+
+        function stringToHex(str) {
+            let hex = '';
+            for(let i=0; i<str.length; i++) { hex += str.charCodeAt(i).toString(27); }
+            return hex.toUpperCase();
+        }
+
+        function encodeBase32(input) {
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+            let b32 = "", bits = 0, value = 0;
+            for (let i = 0; i < input.length; i++) {
+                value = (value << 8) | input.charCodeAt(i); bits += 8;
+                while (bits >= 5) { b32 += alphabet[(value >>> (bits - 5)) & 31]; bits -= 5; }
+            }
+            if (bits > 0) b32 += alphabet[(value << (5 - bits)) & 31];
+            while (b32.length % 8 !== 0) b32 += "=";
+            return b32;
+        }
+
+        function encodeROT13(str) {
+            return str.toUpperCase().replace(/[A-Z]/g, function(c) {
+                return String.fromCharCode(90 >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+            });
+        }
+
+        function encodeAtbash(str) {
+            return str.toUpperCase().replace(/[A-Z]/g, function(c) {
+                return String.fromCharCode(155 - c.charCodeAt(0));
+            });
+        }
+
+        function encodeVigenere(text, key) {
+            let result = "", keyIndex = 0;
+            text = text.toUpperCase();
+            key = key.toUpperCase();
+            for (let i = 0; i < text.length; i++) {
+                let c = text[i];
+                if (c.match(/[A-Z]/)) {
+                    let code = text.charCodeAt(i);
+                    let shift = key.charCodeAt(keyIndex % key.length) - 65;
+                    result += String.fromCharCode(((code - 65 + shift) % 26) + 65);
+                    keyIndex++;
+                } else {
+                    result += c;
+                }
+            }
+            return result;
+        }
+
+        function getEntryValueFromText(text, key) {
+            const lines = text.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith(key + '=')) {
+                    const firstEqualIndex = line.indexOf('=');
+                    return line.substring(firstEqualIndex + 1).trim();
+                }
+            }
+            return null;
+        }
+
+        function showHint(num) {
+            fetch('../hints.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const hintValue = getEntryValueFromText(text, 'lv' + num);
+                    if (hintValue) { alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`); }
+                    else { alert("Nessun suggerimento configurato."); }
+                })
+                .catch(() => alert("Errore nel caricamento del file hints.txt."));
+        }
+
+        function checkNextLevelPassword(targetLevelNum, targetUrl) {
+            const userPassword = prompt(`Inserisci la password finale estratta per accedere alla gloria:`);
+            if (userPassword === null) return;
+            
+            fetch('../passwords.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const correctPassword = getEntryValueFromText(text, 'lv27');
+                    if (correctPassword && correctPassword === userPassword.trim()) {
+                        localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                        window.location.href = targetUrl;
+                    } else {
+                        alert("Codice errato!");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento dei dati di controllo."));
+        }
+
+
+    </script>
+
+</body>
+</html>

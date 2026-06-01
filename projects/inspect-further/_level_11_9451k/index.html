@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 11 - Il Pulsante Bloccato</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #30363d; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #2ea043; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(46, 160, 67, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #2ea043; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-menu { border: 1px solid #58a6ff; color: #58a6ff; background: transparent; }
+        .btn-hint { border: 1px solid #e3b341; color: #e3b341; background: transparent; }
+        
+
+        .btn-next { background-color: #2ea043; color: white; border: none; }
+        .btn-next:disabled { background-color: #21262d; color: #8b949e; cursor: not-allowed; border: 1px solid #30363d; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 11</div>
+        <div class="box">
+            <h2>Controlli Superficiali</h2>
+            <p>A volte gli sviluppatori bloccano delle azioni importanti solo a livello visivo, dimenticando che il codice client-side è sotto il totale controllo dell'utente.</p>
+            <p>Usa la scheda <strong>"Elements" (Elementi)</strong> dell'Ispeziona Elemento per esaminare il pulsante verde qui sotto.</p>
+            <p>Trova la restrizione che lo blocca, rimuovila direttamente dall'HTML e clicca per vincere!</p>
+            
+            <div class="btn-group">
+                <a href="../index.html" class="btn btn-menu">Menu Principale</a>
+                <button onclick="showHint(11)" class="btn btn-hint">💡 Suggerimento</button>
+                
+                <button id="nextLevelBtn" disabled onclick="bypassAndGoToNext(12, '../_level_12_6027l/index.html')" class="btn btn-next">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function bypassAndGoToNext(targetLevelNum, targetUrl) {
+            if (document.getElementById('nextLevelBtn').disabled) {
+                alert("Nice try! Il pulsante è ancora bloccato.");
+                return;
+            }
+            
+            localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+            
+            alert("Ottimo lavoro! Hai aggirato la restrizione client-side con successo.");
+            window.location.href = targetUrl;
+        }
+
+        function getEntryValueFromText(text, key) {
+            const lines = text.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith(key + '=')) {
+                    return line.split('=').trim();
+                }
+            }
+            return null;
+        }
+
+        function showHint(num) {
+            fetch('../hints.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const hintValue = getEntryValueFromText(text, 'lv' + num);
+                    if (hintValue) {
+                        alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`);
+                    } else {
+                        alert("Nessun suggerimento configurato per questo livello.");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file hints.txt."));
+        }
+    </script>
+</body>
+</html>

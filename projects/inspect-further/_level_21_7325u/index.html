@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 21 - Riparo dei Byte Magici</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #f85149; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #f85149; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(248, 81, 73, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #f85149; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        
+        .download-zone { margin: 30px 0; padding: 20px; background: #0d1117; border: 1px dashed #da3633; border-radius: 6px; }
+        .btn-download { background-color: #da3633; color: white; border: none; padding: 12px 30px; font-family: inherit; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; box-shadow: 0 4px 15px rgba(218, 54, 51, 0.3); transition: 0.2s; }
+        .btn-download:hover { background-color: #f85149; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 21</div>
+        <div class="box">
+            <h2>Firme Intestazione Corrotte</h2>
+            <p>I sistemi operativi si fidano dei primi byte di un file (Magic Bytes) per determinarne l'estensione e l'algoritmo di apertura.</p>
+            <p>L'amministratore ha sabotato l'archivio protetto azzerando la sua firma identificativa per impedirne l'estrazione.</p>
+            <p>Scarica il file ZIP, usa un **Hex Editor** (editor esadecimale) per riparare la sua intestazione nativa, estrai l'indizio interno e segui le istruzioni!</p>
+            
+            <div class="download-zone">
+                <a href="archivio_corrotto.zip" class="btn-download" download="archivio_corrotto.zip">Scarica Archivio Corrotto</a>
+            </div>
+
+            <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap;">
+                <a href="../index.html" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #58a6ff; color: #58a6ff; background: transparent;">Menu Principale</a>
+                <button onclick="showHint(21)" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; border: 1px solid #e3b341; color: #e3b341; background: transparent;">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(22, '../_level_22_9146v/index.html')" style="padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; background-color: #da3633; color: white; border: none; box-shadow: 0 4px 15px rgba(218, 54, 51, 0.3);">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let secretKeyResponse = "Esegui prima il comando corretto estratto dall'archivio.";
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('../passwords.txt')
+                .then(r => r.ok ? r.text() : "")
+                .then(text => {
+                    const dynamicPassword = getEntryValueFromText(text, 'lv22');
+                    if (dynamicPassword) {
+                        secretKeyResponse = `🔑 PASSWORD ACQUISITA. Password Livello 22: ${dynamicPassword}`;
+                    } else {
+                        secretKeyResponse = "Errore: chiave 'lv22' non trovata in passwords.txt";
+                    }
+                });
+        });
+
+        window.sblocca_livello_22 = function() {
+            console.log("%c" + secretKeyResponse, "color: #56d364; font-size: 14px; font-weight: bold;");
+            return "Comando validato.";
+        };
+
+        function getEntryValueFromText(text, key) {
+            const lines = text.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith(key + '=')) {
+                    const firstEqualIndex = line.indexOf('=');
+                    return line.substring(firstEqualIndex + 1).trim();
+                }
+            }
+            return null;
+        }
+
+        function showHint(num) {
+            fetch('../hints.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const hintValue = getEntryValueFromText(text, 'lv' + num);
+                    if (hintValue) {
+                        alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`);
+                    } else {
+                        alert("Nessun suggerimento configurato per questo livello.");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file hints.txt."));
+        }
+
+        function checkNextLevelPassword(targetLevelNum, targetUrl) {
+            const userPassword = prompt(`Inserisci la password del Livello ${targetLevelNum} per continuare:`);
+            if (userPassword === null) return;
+            
+            fetch('../passwords.txt')
+                .then(r => r.text())
+                .then(text => {
+                    const correctPassword = getEntryValueFromText(text, 'lv' + targetLevelNum);
+                    
+                    if (correctPassword && correctPassword === userPassword.trim()) {
+                        localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                        window.location.href = targetUrl;
+                    } else {
+                        alert("Password errata!");
+                    }
+                })
+                .catch(() => alert("Errore nel caricamento del file passwords.txt."));
+        }
+    </script>
+</body>
+</html>

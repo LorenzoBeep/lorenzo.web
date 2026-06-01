@@ -1,0 +1,26 @@
+lv1=...davvero non riesci a vederla??? E' la scritta in verde sotto le istruzioni. Prego.
+lv2=Usa la combinazione di tasti Ctrl+A (o Cmd+A su Mac) per evidenziare il testo nascosto nel box.
+lv3=Fai click destro in un punto vuoto della pagina e seleziona 'Visualizza sorgente pagina'. Cerca il commento verde in cima al codice!
+lv4=Fai click direttamente sul grande titolo 'INSPECT FURTHER' nella barra di navigazione in alto per attivare il codice segreto!
+lv5=La stringa nel box è codificata in Base64. Cerca un decoder Base64 online per scoprire il testo in chiaro!
+lv6=Apri gli Strumenti per sviluppatori (F12), vai sulla scheda 'Console' e digita esattamente la funzione richiesta per stampare la chiave!
+lv7=Apri la scheda "Sources" (Sorgenti / Origini) nell'Ispeziona Elemento. Naviga tra le cartelle del sito per trovare il file nascosto 'segreto.txt'.
+lv8=Apri la scheda "Application" (Applicazione) o "Storage" (Archiviazione) di Ispeziona e vai nella sezione "Cookie"!
+lv9=Apri la scheda "Network", e filtra le richieste per "JS" nella scheda Network. Seleziona la richiesta rossa (se esce come Errore 404 è giusto!) e vai nella scheda "Intestazioni" dentro la richiesta e vedi i parametri dentro l'URL!
+lv10=Apri la scheda "Elementi", trova la casella di testo della password (o fai clic destro sulla casella e clicca Ispeziona), e trova la password nascosta in qualche tag!
+lv11=Fai tasto destro sul pulsante grigio e seleziona Ispeziona. Nel codice HTML vedrai la parola "disabled" dentro il tag del bottone. Fai doppio clic su di essa, cancellala e premi Invio!
+lv12=Nei DevTools del browser, clicca sui tre puntini -> Altri strumenti -> Condizioni di rete. Disabilita lo User-Agent di default e scrivi "AdminBrowser" nello spazio personalizzato. Poi ricarica la pagina.
+lv13=Il file standard si chiama sempre "robots.txt". Modifica l'URL nella barra degli indirizzi del browser sostituendo "index.html" con "robots.txt" alla fine del percorso attuale per leggerlo.
+lv14=Guarda la fine dell'indirizzo URL del sito. Aggiungi il punto di domanda seguito dal parametro richiesto per forzare l'accesso amministratore, in questo modo: ?admin=true
+lv15=La stringa è scritta in Esadecimale (HEX). Usa un convertitore online da Hex a Testo. Otterrai un testo strano che finisce con il simbolo '=': quello è Base64. Decodifica anche il Base64 per vincere!
+lv16=Salva il file criptica.png sul PC. Apri un sito di fotoritocco online (come Photopea) o un programma di grafica, aumenta al massimo la luminosità o l'esposizione. Leggi l'istruzione e digitala nella Console del browser!
+lv17=Scarica l'immagine sfondo.png. Se sei su Raspberry/Linux usa il comando "exiftool sfondo.png" nel terminale, oppure usa un sito come "jimpl.com" o un EXIF viewer online per leggere i commenti interni del file!
+lv18=Questo è un cifrario a scorrimento alfabetico standard (ROT13). Puoi risolverlo spostando ogni lettera indietro di 13 posizioni oppure incollando la stringa su uno strumento online come CyberChef inserendo l'operazione ROT13.
+lv19=Il testo contiene solo lettere maiuscole e numeri dal 2 al 7, terminando con dei simboli '='. Si tratta della codifica Base32! Usa la funzione "From Base32" su un decifratore online per rivelare il testo.
+lv20=Usa il pulsante per copiare la stringa. Poi incollala in uno strumento online per la decodifica forense di caratteri invisibili ("Zero-Width Characters", ad esempio il sito di diffchecker o tool dedicati come "Zero Width Character Steganography Tool").
+lv21=Apri il file .zip con un Hex Editor (es. il sito "hexed.it" o uno strumento locale). Noterai che i primi 4 byte sono tutti zeri (00 00 00 00). Sostituisci quei primi 4 elementi con la firma standard dei file ZIP, ovvero "50 4B 03 04". Salva il file, estrai il testo e leggi cosa fare!
+lv22=Apri la Console dei DevTools (F12). Gli sviluppatori che usano offuscamenti di questo tipo lasciano spesso tracce o mappature globali in memoria. Prova a digitare 'window.verify_routine' o semplicemente 'verify_routine' nella console per forzare il dump del sistema e leggere la password!
+lv23=L'operazione XOR (^) è invertibile: se applichi la chiave 42 due volte allo stesso valore, ottieni il carattere di partenza.\nESEMPIO: Se hai un array cifrato [108, 97, 103, 115],\napplica lo XOR a ogni numero, così:\n • 108 ^ 42 = 66\n• 97 ^ 42  = 70\n• 103 ^ 42 = 69\n• 115 ^ 42 = 73\n\nConverti i risultati decimali risultanti (66, 70, 69, 73) nei rispettivi caratteri ASCII:\n• 66 -> "B", 70 -> "F", 69 -> "E", 73 -> "I"\n\n
+lv24=Scarica il file WAV. Apri il software Audacity sul tuo computer (o usa un analizzatore di spettrogrammi online). Carica la traccia, clicca sul menu a tendina del nome della traccia audio a sinistra e seleziona la modalità di visualizzazione "Spettrogramma" (Spectrogram). Guarda il disegno delle frequenze per leggere l'istruzione segreta!
+lv25=Fai tasto destro sull'immagine logo.png e salvala. Apri il file in un editor di testo e scorri fino all'ultima riga per trovare il comando!
+lv26=Apri la Console dei DevTools (F12) e digita il comando "rapporto_enigma()" per stampare l'ordine esatto dei cifrari e le chiavi di decifratura necessarie! Dopo, decodifica l'immagine avuta con la steganografia!

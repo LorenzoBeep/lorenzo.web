@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 10 - Input Nascosto</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        .navbar { width: 100%; background-color: #161b22; border-bottom: 2px solid #30363d; padding: 15px 30px; display: flex; align-items: center; box-sizing: border-box; }
+        .navbar-title { color: #2ea043; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(46, 160, 67, 0.3); margin: 0; }
+        .content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .level-header { color: #2ea043; font-size: 22px; font-weight: bold; margin-bottom: 15px; letter-spacing: 3px; }
+        .box { border: 1px solid #30363d; padding: 40px 50px; text-align: center; background: #161b22; border-radius: 8px; width: 100%; max-width: 650px; box-sizing: border-box; }
+        
+        .login-form { margin: 25px auto 10px auto; max-width: 300px; text-align: left; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #8b949e; font-size: 14px; }
+        .form-control { width: 100%; padding: 10px; background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9; font-family: inherit; box-sizing: border-box; }
+        .form-control:focus { border-color: #58a6ff; outline: none; }
+        
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; font-family: inherit; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-menu { border: 1px solid #58a6ff; color: #58a6ff; background: transparent; }
+        .btn-hint { border: 1px solid #e3b341; color: #e3b341; background: transparent; }
+        .btn-next { background-color: #2ea043; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-title">INSPECT FURTHER</div>
+    </div>
+
+    <div class="content">
+        <div class="level-header">// LIVELLO 10</div>
+        <div class="box">
+            <h2>Campi Invisibili</h2>
+            <p>Non tutto ciò che esiste all'interno di una pagina web viene mostrato a schermo dall'interfaccia grafica.</p>
+            <p>Esamina la struttura della pagina con la scheda <strong>"Elements" (Elementi)</strong> dell'Ispeziona Elemento.</p>
+            <p>Trova il modulo di autenticazione qui sotto ed esplora i suoi tag interni per scovare la chiave nascosta!</p>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" value="admin" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Session Token</label>
+                    <input type="text" class="form-control" value="••••••••••••••••" disabled>
+                </div>
+                
+                <input type="hidden" id="hidden_flag_input" name="secret_level_key" value="Caricamento...">
+            </div>
+
+            <div class="btn-group">
+                <a href="../index.html" class="btn btn-menu">Menu Principale</a>
+                <button onclick="showHint(10)" class="btn btn-hint">💡 Suggerimento</button>
+                <button onclick="checkNextLevelPassword(11, '../_level_11_9451k/index.html')" class="btn btn-next">Prossimo Livello ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+    fetch('../passwords.txt')
+        .then(r => {
+            if (!r.ok) throw new Error();
+            return r.text();
+        })
+        .then(text => {
+            const dynamicPassword = getEntryValueFromText(text, 'lv11');
+            if (dynamicPassword) {
+                document.getElementById('hidden_flag_input').value = dynamicPassword;
+                console.log("Parametri di configurazione del modulo applicati.");
+            } else {
+                console.error("Chiave 'lv11' non trovata nel file.");
+            }
+        })
+        .catch(() => console.error("Errore nella gestione del file passwords.txt o nello script."));
+});
+
+function getEntryValueFromText(text, key) {
+    const lines = text.split('\n');
+    for (let line of lines) {
+        line = line.trim();
+        if (line.startsWith(key + '=')) {
+            return line.split('=')[1].trim(); 
+        }
+    }
+    return null;
+}
+
+function showHint(num) {
+    fetch('../hints.txt')
+        .then(r => r.text())
+        .then(text => {
+            const hintValue = getEntryValueFromText(text, 'lv' + num);
+            if (hintValue) {
+                alert(`💡 SUGGERIMENTO LIVELLO ${num}:\n\n${hintValue}`);
+            } else {
+                alert("Nessun suggerimento configurato per questo livello.");
+            }
+        })
+        .catch(() => alert("Errore nel caricamento del file hints.txt."));
+}
+
+function checkNextLevelPassword(targetLevelNum, targetUrl) {
+    const userPassword = prompt(`Inserisci la password del Livello ${targetLevelNum} per continuare:`);
+    if (userPassword === null) return;
+    
+    fetch('../passwords.txt')
+        .then(r => r.text())
+        .then(text => {
+            const correctPassword = getEntryValueFromText(text, 'lv' + targetLevelNum);
+            
+            if (correctPassword && correctPassword === userPassword.trim()) {
+                localStorage.setItem('maxUnlockedLevel', targetLevelNum);
+                window.location.href = targetUrl;
+            } else {
+                alert("Password errata! Controlla maiuscole e minuscole.");
+            }
+        })
+        .catch(() => alert("Errore nel caricamento del file passwords.txt."));
+}
+
+    </script>
+</body>
+</html>

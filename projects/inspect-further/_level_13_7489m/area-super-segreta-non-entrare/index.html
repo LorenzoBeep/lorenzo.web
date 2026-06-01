@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory Segreta</title>
+    <style>
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Courier New', Courier, monospace; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .box { border: 1px solid #da3633; padding: 40px; text-align: center; background: #161b22; border-radius: 8px; max-width: 500px; box-sizing: border-box; }
+        h1 { color: #da3633; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Pannello Riservato</h1>
+        <p>I crawler dei motori di ricerca non troveranno mai questa pagina, ma un hacker sì!</p>
+        <p>La password per il Livello 14 è:</p>
+        <h2 id="pwd" style="color: white; background: #0d1117; padding: 10px; border-radius: 4px;">Caricamento...</h2>
+    </div>
+    <script>
+        // Sale di due cartelle per raggiungere passwords.txt
+        fetch('../../../passwords.txt')
+            .then(r => r.text())
+            .then(text => {
+                const lines = text.split('\n');
+                for (let line of lines) {
+                    if (line.trim().startsWith('lv14=')) {
+                        document.getElementById('pwd').textContent = line.split('=')[1].trim();
+                        return;
+                    }
+                }
+                document.getElementById('pwd').textContent = "Errore: 'lv14' non trovato.";
+            })
+            .catch(() => document.getElementById('pwd').textContent = "Errore di caricamento.");
+    </script>
+</body>
+</html>
